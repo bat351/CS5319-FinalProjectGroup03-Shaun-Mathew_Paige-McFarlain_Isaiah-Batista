@@ -186,9 +186,9 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
 
     while True:
 
-        if TOTALBLACK == 11:
+        if TOTALBLACK == 0:
             return 'Player 1'
-        if TOTALRED == 11:
+        if TOTALRED == 0:
             return 'Player 2'
 
         for event in pygame.event.get():
