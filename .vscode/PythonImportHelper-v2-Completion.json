@@ -348,7 +348,7 @@
         "kind": 2,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "def win(winner):\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        WINNER = winner + \" wins\"\n        pygame.display.set_caption(WINNER)",
+        "peekOfCode": "def win(winner):\n     global P1_WINS, P2_WINS\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        WINNER = winner + \" wins\"",
         "detail": "menu",
         "documentation": {}
     },
@@ -393,7 +393,7 @@
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "SCREEN = pygame.display.set_mode((800, 800))\npygame.display.set_caption(\"Menu\")\nBG = pygame.image.load(\"assets/Background.png\")\nP1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1",
+        "peekOfCode": "SCREEN = pygame.display.set_mode((800, 800))\npygame.display.set_caption(\"Menu\")\nBG = pygame.image.load(\"assets/Background.png\")\nP1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     global P1_WINS, P2_WINS\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':",
         "detail": "menu",
         "documentation": {}
     },
@@ -402,7 +402,7 @@
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "BG = pygame.image.load(\"assets/Background.png\")\nP1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()",
+        "peekOfCode": "BG = pygame.image.load(\"assets/Background.png\")\nP1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     global P1_WINS, P2_WINS\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:",
         "detail": "menu",
         "documentation": {}
     },
@@ -411,7 +411,7 @@
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "P1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")",
+        "peekOfCode": "P1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     global P1_WINS, P2_WINS\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()",
         "detail": "menu",
         "documentation": {}
     },
@@ -420,7 +420,7 @@
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "P2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        WINNER = winner + \" wins\"",
+        "peekOfCode": "P2_WINS = 0\ndef win(winner):\n     global P1_WINS, P2_WINS\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")",
         "detail": "menu",
         "documentation": {}
     },

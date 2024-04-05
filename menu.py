@@ -15,6 +15,7 @@ P2_WINS = 0
 
 
 def win(winner):
+     global P1_WINS, P2_WINS
      if winner == 'Player 1':
          P1_WINS +=1
      elif winner == 'Player 2':
