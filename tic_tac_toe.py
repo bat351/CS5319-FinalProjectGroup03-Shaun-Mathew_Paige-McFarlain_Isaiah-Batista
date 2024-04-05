@@ -3,6 +3,8 @@ import random
 import sys
 from itertools import combinations
 
+from checkers import ROWS, WIDTH
+
 WIDTH = 800
 ROWS = 3
 
@@ -67,4 +69,66 @@ class Piece:
     def __init__(self, image):
         self.image = image
 
-def
+def make_move(grid, row, col, player):
+    if grid[row][col].piece is None:
+        if player == 'X':
+            grid[row][col].piece = Piece(X_IMAGE)
+        else:
+            grid[row][col].piece = Piece(O_IMAGE)
+        return True
+    return False
+
+def check_winner(grid, player):
+    for i in range(ROWS):
+        if all([grid[i][j].piece is not None and grid[i][j].piece.image == player for j in range(ROWS)]):
+            return True
+        if all([grid[j][i].piece is not None and grid[j][i].piece.image == player for j in range(ROWS)]):
+            return True
+    if all([grid[i][i].piece is not None and grid[i][i].piece.image == player for i in range(ROWS)]):
+        return True
+    if all([grid[i][ROWS - i - 1].piece is not None and grid[i][ROWS - i - 1].piece.image == player for i in range(ROWS)]):
+        return True
+    return False
+
+def tic_tac_toe(WIDTH,ROWS):
+    grid = make_grid(ROWS, WIDTH)
+    currMove = 'X'
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                print('EXIT SUCCESSFUL')
+                pygame.quit()
+                sys.exit()
+
+            # if event.type == pygame.KEYDOWN:
+            #     if event.key == pygame.K_ESCAPE:
+            #         if pause:
+            #             pause = False
+            #         else:
+            #             pause = True
+            #              draw_pause()
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = pygame.mouse.get_pos()
+                row = y // (WIDTH // ROWS)
+                col = x // (WIDTH // ROWS)
+
+                if  make_move(grid, row, col, currMove):
+                    if currMove == 'X':
+                        currMove = 'O'
+                    else:
+                        currMove = 'X'
+                    priorMoves.append((row, col))
+
+                    X_WIN = check_winner(grid, X_IMAGE)
+                    O_WIN = check_winner(grid, O_IMAGE)
+
+                    if X_WIN:
+                        print('X WINS')
+                        break
+                    if O_WIN:
+                        print('O WINS')
+                        break
+
+        update_display(WIN, grid, ROWS, WIDTH)

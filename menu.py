@@ -24,7 +24,7 @@ def play_checkers():
 def play_tic_tac_toe():
     pygame.display.set_caption("Tic Tac Toe")
     SCREEN.fill("black")
-    tic_tac_toe()
+    tic_tac_toe(800, 3)
 
 def options():
     while True:
@@ -103,7 +103,7 @@ def main_menu():
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
-        for button in [CHECKERS_BUTTON, T, OPTIONS_BUTTON, QUIT_BUTTON]:
+        for button in [CHECKERS_BUTTON, TIC_TAC_TOE_BUTTON, OPTIONS_BUTTON, QUIT_BUTTON]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(SCREEN)
         for event in pygame.event.get():
