@@ -9,15 +9,6 @@
         "documentation": {}
     },
     {
-        "label": "random",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "random",
-        "description": "random",
-        "detail": "random",
-        "documentation": {}
-    },
-    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
@@ -60,6 +51,22 @@
         "documentation": {}
     },
     {
+        "label": "Button",
+        "importPath": "button",
+        "description": "button",
+        "isExtraImport": true,
+        "detail": "button",
+        "documentation": {}
+    },
+    {
+        "label": "checkers",
+        "importPath": "checkers",
+        "description": "checkers",
+        "isExtraImport": true,
+        "detail": "checkers",
+        "documentation": {}
+    },
+    {
         "label": "checkers",
         "importPath": "checkers",
         "description": "checkers",
@@ -92,38 +99,38 @@
         "documentation": {}
     },
     {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
         "label": "Button",
         "kind": 6,
         "importPath": "button",
         "description": "button",
-        "peekOfCode": "class Button():\n\tdef __init__(self, image, pos, text_input, font, base_color, hovering_color):\n\t\tself.image = image\n\t\tself.x_pos = pos[0]\n\t\tself.y_pos = pos[1]\n\t\tself.font = font\n\t\tself.base_color, self.hovering_color = base_color, hovering_color\n\t\tself.text_input = text_input\n\t\tself.text = self.font.render(self.text_input, True, self.base_color)\n\t\tif self.image is None:",
+        "peekOfCode": "class Button():\n\tdef __init__(self, pos, input, font, base, hover):\n\t\tself.x = pos[0]\n\t\tself.y = pos[1]\n\t\tself.font = font\n\t\tself.base, self.hover = base, hover\n\t\tself.input = input\n\t\tself.text = self.font.render(self.input, True, self.base)\n\t\tself.rect = self.text.get_rect(center=(self.x, self.y))\n\tdef update(self, screen):",
         "detail": "button",
         "documentation": {}
     },
     {
-        "label": "\t\tself.image",
+        "label": "\t\tself.x",
         "kind": 5,
         "importPath": "button",
         "description": "button",
-        "peekOfCode": "\t\tself.image = image\n\t\tself.x_pos = pos[0]\n\t\tself.y_pos = pos[1]\n\t\tself.font = font\n\t\tself.base_color, self.hovering_color = base_color, hovering_color\n\t\tself.text_input = text_input\n\t\tself.text = self.font.render(self.text_input, True, self.base_color)\n\t\tif self.image is None:\n\t\t\tself.image = self.text\n\t\tself.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))",
+        "peekOfCode": "\t\tself.x = pos[0]\n\t\tself.y = pos[1]\n\t\tself.font = font\n\t\tself.base, self.hover = base, hover\n\t\tself.input = input\n\t\tself.text = self.font.render(self.input, True, self.base)\n\t\tself.rect = self.text.get_rect(center=(self.x, self.y))\n\tdef update(self, screen):\n\t\tscreen.blit(self.text, self.rect)\n\tdef checkForInput(self, position):",
         "detail": "button",
         "documentation": {}
     },
     {
-        "label": "\t\tself.x_pos",
+        "label": "\t\tself.y",
         "kind": 5,
         "importPath": "button",
         "description": "button",
-        "peekOfCode": "\t\tself.x_pos = pos[0]\n\t\tself.y_pos = pos[1]\n\t\tself.font = font\n\t\tself.base_color, self.hovering_color = base_color, hovering_color\n\t\tself.text_input = text_input\n\t\tself.text = self.font.render(self.text_input, True, self.base_color)\n\t\tif self.image is None:\n\t\t\tself.image = self.text\n\t\tself.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))\n\t\tself.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))",
-        "detail": "button",
-        "documentation": {}
-    },
-    {
-        "label": "\t\tself.y_pos",
-        "kind": 5,
-        "importPath": "button",
-        "description": "button",
-        "peekOfCode": "\t\tself.y_pos = pos[1]\n\t\tself.font = font\n\t\tself.base_color, self.hovering_color = base_color, hovering_color\n\t\tself.text_input = text_input\n\t\tself.text = self.font.render(self.text_input, True, self.base_color)\n\t\tif self.image is None:\n\t\t\tself.image = self.text\n\t\tself.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))\n\t\tself.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))\n\tdef update(self, screen):",
+        "peekOfCode": "\t\tself.y = pos[1]\n\t\tself.font = font\n\t\tself.base, self.hover = base, hover\n\t\tself.input = input\n\t\tself.text = self.font.render(self.input, True, self.base)\n\t\tself.rect = self.text.get_rect(center=(self.x, self.y))\n\tdef update(self, screen):\n\t\tscreen.blit(self.text, self.rect)\n\tdef checkForInput(self, position):\n\t\tif position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):",
         "detail": "button",
         "documentation": {}
     },
@@ -132,16 +139,16 @@
         "kind": 5,
         "importPath": "button",
         "description": "button",
-        "peekOfCode": "\t\tself.font = font\n\t\tself.base_color, self.hovering_color = base_color, hovering_color\n\t\tself.text_input = text_input\n\t\tself.text = self.font.render(self.text_input, True, self.base_color)\n\t\tif self.image is None:\n\t\t\tself.image = self.text\n\t\tself.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))\n\t\tself.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))\n\tdef update(self, screen):\n\t\tif self.image is not None:",
+        "peekOfCode": "\t\tself.font = font\n\t\tself.base, self.hover = base, hover\n\t\tself.input = input\n\t\tself.text = self.font.render(self.input, True, self.base)\n\t\tself.rect = self.text.get_rect(center=(self.x, self.y))\n\tdef update(self, screen):\n\t\tscreen.blit(self.text, self.rect)\n\tdef checkForInput(self, position):\n\t\tif position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):\n\t\t\treturn True",
         "detail": "button",
         "documentation": {}
     },
     {
-        "label": "\t\tself.text_input",
+        "label": "\t\tself.input",
         "kind": 5,
         "importPath": "button",
         "description": "button",
-        "peekOfCode": "\t\tself.text_input = text_input\n\t\tself.text = self.font.render(self.text_input, True, self.base_color)\n\t\tif self.image is None:\n\t\t\tself.image = self.text\n\t\tself.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))\n\t\tself.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))\n\tdef update(self, screen):\n\t\tif self.image is not None:\n\t\t\tscreen.blit(self.image, self.rect)\n\t\tscreen.blit(self.text, self.text_rect)",
+        "peekOfCode": "\t\tself.input = input\n\t\tself.text = self.font.render(self.input, True, self.base)\n\t\tself.rect = self.text.get_rect(center=(self.x, self.y))\n\tdef update(self, screen):\n\t\tscreen.blit(self.text, self.rect)\n\tdef checkForInput(self, position):\n\t\tif position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):\n\t\t\treturn True\n\t\treturn False\n\tdef changeColor(self, position):",
         "detail": "button",
         "documentation": {}
     },
@@ -150,16 +157,7 @@
         "kind": 5,
         "importPath": "button",
         "description": "button",
-        "peekOfCode": "\t\tself.text = self.font.render(self.text_input, True, self.base_color)\n\t\tif self.image is None:\n\t\t\tself.image = self.text\n\t\tself.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))\n\t\tself.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))\n\tdef update(self, screen):\n\t\tif self.image is not None:\n\t\t\tscreen.blit(self.image, self.rect)\n\t\tscreen.blit(self.text, self.text_rect)\n\tdef checkForInput(self, position):",
-        "detail": "button",
-        "documentation": {}
-    },
-    {
-        "label": "\t\t\tself.image",
-        "kind": 5,
-        "importPath": "button",
-        "description": "button",
-        "peekOfCode": "\t\t\tself.image = self.text\n\t\tself.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))\n\t\tself.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))\n\tdef update(self, screen):\n\t\tif self.image is not None:\n\t\t\tscreen.blit(self.image, self.rect)\n\t\tscreen.blit(self.text, self.text_rect)\n\tdef checkForInput(self, position):\n\t\tif position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):\n\t\t\treturn True",
+        "peekOfCode": "\t\tself.text = self.font.render(self.input, True, self.base)\n\t\tself.rect = self.text.get_rect(center=(self.x, self.y))\n\tdef update(self, screen):\n\t\tscreen.blit(self.text, self.rect)\n\tdef checkForInput(self, position):\n\t\tif position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):\n\t\t\treturn True\n\t\treturn False\n\tdef changeColor(self, position):\n\t\tif position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):",
         "detail": "button",
         "documentation": {}
     },
@@ -168,16 +166,7 @@
         "kind": 5,
         "importPath": "button",
         "description": "button",
-        "peekOfCode": "\t\tself.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))\n\t\tself.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))\n\tdef update(self, screen):\n\t\tif self.image is not None:\n\t\t\tscreen.blit(self.image, self.rect)\n\t\tscreen.blit(self.text, self.text_rect)\n\tdef checkForInput(self, position):\n\t\tif position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):\n\t\t\treturn True\n\t\treturn False",
-        "detail": "button",
-        "documentation": {}
-    },
-    {
-        "label": "\t\tself.text_rect",
-        "kind": 5,
-        "importPath": "button",
-        "description": "button",
-        "peekOfCode": "\t\tself.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))\n\tdef update(self, screen):\n\t\tif self.image is not None:\n\t\t\tscreen.blit(self.image, self.rect)\n\t\tscreen.blit(self.text, self.text_rect)\n\tdef checkForInput(self, position):\n\t\tif position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):\n\t\t\treturn True\n\t\treturn False\n\tdef changeColor(self, position):",
+        "peekOfCode": "\t\tself.rect = self.text.get_rect(center=(self.x, self.y))\n\tdef update(self, screen):\n\t\tscreen.blit(self.text, self.rect)\n\tdef checkForInput(self, position):\n\t\tif position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):\n\t\t\treturn True\n\t\treturn False\n\tdef changeColor(self, position):\n\t\tif position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):\n\t\t\tself.text = self.font.render(self.input, True, self.hover)",
         "detail": "button",
         "documentation": {}
     },
@@ -186,7 +175,7 @@
         "kind": 5,
         "importPath": "button",
         "description": "button",
-        "peekOfCode": "\t\t\tself.text = self.font.render(self.text_input, True, self.hovering_color)\n\t\telse:\n\t\t\tself.text = self.font.render(self.text_input, True, self.base_color)",
+        "peekOfCode": "\t\t\tself.text = self.font.render(self.input, True, self.hover)\n\t\telse:\n\t\t\tself.text = self.font.render(self.input, True, self.base)",
         "detail": "button",
         "documentation": {}
     },
@@ -195,7 +184,7 @@
         "kind": 5,
         "importPath": "button",
         "description": "button",
-        "peekOfCode": "\t\t\tself.text = self.font.render(self.text_input, True, self.base_color)",
+        "peekOfCode": "\t\t\tself.text = self.font.render(self.input, True, self.base)",
         "detail": "button",
         "documentation": {}
     },
@@ -204,7 +193,7 @@
         "kind": 6,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "class Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col\n        self.x = int(row * width)\n        self.y = int(col * width)\n        self.colour = WHITE\n        self.piece = None\n    def draw(self, WIN):\n        pygame.draw.rect(WIN, self.colour, (self.x, self.y, WIDTH / ROWS, WIDTH / ROWS))",
+        "peekOfCode": "class Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col\n        self.x = int(row * width)\n        self.y = int(col * width)\n        self.colour = (255,255,255)\n        self.piece = None\n    def draw(self, SCREEN):\n        pygame.draw.rect(SCREEN, self.colour, (self.x, self.y, WIDTH / ROWS, WIDTH / ROWS))",
         "detail": "checkers",
         "documentation": {}
     },
@@ -213,7 +202,7 @@
         "kind": 6,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "class Piece:\n    def __init__(self, team):\n        self.team=team\n        self.image= RED if self.team=='R' else GREEN\n        self.type=None\n    def draw(self, x, y):\n        WIN.blit(self.image, (x,y))\ndef getNode(grid, rows, width):\n    gap = width//rows\n    RowX,RowY = pygame.mouse.get_pos()",
+        "peekOfCode": "class Piece:\n    def __init__(self, team):\n        self.team=team\n        self.image= RED if self.team=='R' else BLACK\n        self.type=None\n    def draw(self, x, y):\n        SCREEN.blit(self.image, (x,y))\ndef getNode(grid, rows, width):\n    gap = width//rows\n    RowX,RowY = pygame.mouse.get_pos()",
         "detail": "checkers",
         "documentation": {}
     },
@@ -222,7 +211,7 @@
         "kind": 2,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "def update_display(win, grid, rows, width):\n    for row in grid:\n        for spot in row:\n            spot.draw(win)\n    draw_grid(win, rows, width)\n    pygame.display.update()\ndef make_grid(rows, width):\n    grid = []\n    gap = width// rows\n    count = 0",
+        "peekOfCode": "def update_display(SCREEN, grid, rows, width):\n    for row in grid:\n        for spot in row:\n            spot.draw(SCREEN)\n    draw_grid(SCREEN, rows, width)\n    pygame.display.update()\ndef make_grid(rows, width):\n    grid = []\n    gap = width// rows\n    count = 0",
         "detail": "checkers",
         "documentation": {}
     },
@@ -231,7 +220,7 @@
         "kind": 2,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "def make_grid(rows, width):\n    grid = []\n    gap = width// rows\n    count = 0\n    for i in range(rows):\n        grid.append([])\n        for j in range(rows):\n            node = Node(j,i, gap)\n            if abs(i-j) % 2 == 0:\n                node.colour=GRAY",
+        "peekOfCode": "def make_grid(rows, width):\n    grid = []\n    gap = width// rows\n    count = 0\n    for i in range(rows):\n        grid.append([])\n        for j in range(rows):\n            node = Node(j,i, gap)\n            if abs(i-j) % 2 == 0:\n                node.colour=(100,100,100)",
         "detail": "checkers",
         "documentation": {}
     },
@@ -240,7 +229,7 @@
         "kind": 2,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "def draw_grid(win, rows, width):\n    WIN.blit(surface, (0, 0))\n    gap = width // ROWS\n    for i in range(rows):\n        pygame.draw.line(win, GRAY, (0, i * gap), (width, i * gap))\n        for j in range(rows):\n            pygame.draw.line(win, GRAY, (j * gap, 0), (j * gap, width))\n# def draw_pause():\n#     pygame.draw.rect(surface, (128,128,128,150), [0,0,WIDTH,WIDTH])\n#     WIN.blit(surface, (0,0))",
+        "peekOfCode": "def draw_grid(SCREEN, rows, width):\n    # SCREEN.blit(surface, (0, 0))\n    gap = width // ROWS\n    for i in range(rows):\n        pygame.draw.line(SCREEN, (100,100,100), (0, i * gap), (width, i * gap))\n        for j in range(rows):\n            pygame.draw.line(SCREEN, (100,100,100), (j * gap, 0), (j * gap, width))\n# def draw_pause():\n#     pygame.draw.rect(surface, (128,128,128,150), [0,0,WIDTH,WIDTH])\n#     SCREEN.blit(surface, (0,0))",
         "detail": "checkers",
         "documentation": {}
     },
@@ -258,7 +247,7 @@
         "kind": 2,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "def resetColours(grid, node):\n    positions = generatePotentialMoves(node, grid)\n    positions.append(node)\n    for colouredNodes in positions:\n        nodeX, nodeY = colouredNodes\n        grid[nodeX][nodeY].colour = GRAY if abs(nodeX - nodeY) % 2 == 0 else WHITE\ndef HighlightpotentialMoves(piecePosition, grid):\n    positions = generatePotentialMoves(piecePosition, grid)\n    for position in positions:\n        Column,Row = position",
+        "peekOfCode": "def resetColours(grid, node):\n    positions = generatePotentialMoves(node, grid)\n    positions.append(node)\n    for colouredNodes in positions:\n        nodeX, nodeY = colouredNodes\n        grid[nodeX][nodeY].colour = (100,100,100) if abs(nodeX - nodeY) % 2 == 0 else (255,255,255)\ndef HighlightpotentialMoves(piecePosition, grid):\n    positions = generatePotentialMoves(piecePosition, grid)\n    for position in positions:\n        Column,Row = position",
         "detail": "checkers",
         "documentation": {}
     },
@@ -267,7 +256,7 @@
         "kind": 2,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "def HighlightpotentialMoves(piecePosition, grid):\n    positions = generatePotentialMoves(piecePosition, grid)\n    for position in positions:\n        Column,Row = position\n        grid[Column][Row].colour=BLUE\ndef opposite(team):\n    return \"R\" if team==\"G\" else \"G\"\ndef generatePotentialMoves(nodePosition, grid):\n    checker = lambda x,y: x+y>=0 and x+y<8\n    positions= []",
+        "peekOfCode": "def HighlightpotentialMoves(piecePosition, grid):\n    positions = generatePotentialMoves(piecePosition, grid)\n    for position in positions:\n        Column,Row = position\n        grid[Column][Row].colour=(0,200,0)\ndef opposite(team):\n    return \"R\" if team==\"B\" else \"B\"\ndef generatePotentialMoves(nodePosition, grid):\n    checker = lambda x,y: x+y>=0 and x+y<8\n    positions= []",
         "detail": "checkers",
         "documentation": {}
     },
@@ -276,7 +265,7 @@
         "kind": 2,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "def opposite(team):\n    return \"R\" if team==\"G\" else \"G\"\ndef generatePotentialMoves(nodePosition, grid):\n    checker = lambda x,y: x+y>=0 and x+y<8\n    positions= []\n    column, row = nodePosition\n    if grid[column][row].piece:\n        vectors = [[1, -1], [1, 1]] if grid[column][row].piece.team == \"R\" else [[-1, -1], [-1, 1]]\n        if grid[column][row].piece.type=='KING':\n            vectors = [[1, -1], [1, 1],[-1, -1], [-1, 1]]",
+        "peekOfCode": "def opposite(team):\n    return \"R\" if team==\"B\" else \"B\"\ndef generatePotentialMoves(nodePosition, grid):\n    checker = lambda x,y: x+y>=0 and x+y<8\n    positions= []\n    column, row = nodePosition\n    if grid[column][row].piece:\n        vectors = [[1, -1], [1, 1]] if grid[column][row].piece.team == \"R\" else [[-1, -1], [-1, 1]]\n        if grid[column][row].piece.type=='KING':\n            vectors = [[1, -1], [1, 1],[-1, -1], [-1, 1]]",
         "detail": "checkers",
         "documentation": {}
     },
@@ -294,7 +283,7 @@
         "kind": 2,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "def highlight(ClickedNode, Grid, OldHighlight):\n    Column,Row = ClickedNode\n    Grid[Column][Row].colour=ORANGE\n    if OldHighlight:\n        resetColours(Grid, OldHighlight)\n    HighlightpotentialMoves(ClickedNode, Grid)\n    return (Column,Row)\ndef move(grid, piecePosition, newPosition):\n    resetColours(grid, piecePosition)\n    newColumn, newRow = newPosition",
+        "peekOfCode": "def highlight(ClickedNode, Grid, OldHighlight):\n    Column,Row = ClickedNode\n    Grid[Column][Row].colour=(200,0,0)\n    if OldHighlight:\n        resetColours(Grid, OldHighlight)\n    HighlightpotentialMoves(ClickedNode, Grid)\n    return (Column,Row)\ndef move(grid, piecePosition, newPosition, TOTALBLACK, TOTALRED):\n    resetColours(grid, piecePosition)\n    newColumn, newRow = newPosition",
         "detail": "checkers",
         "documentation": {}
     },
@@ -303,7 +292,7 @@
         "kind": 2,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "def move(grid, piecePosition, newPosition):\n    resetColours(grid, piecePosition)\n    newColumn, newRow = newPosition\n    oldColumn, oldRow = piecePosition\n    piece = grid[oldColumn][oldRow].piece\n    grid[newColumn][newRow].piece=piece\n    grid[oldColumn][oldRow].piece = None\n    if newColumn==7 and grid[newColumn][newRow].piece.team=='R':\n        grid[newColumn][newRow].piece.type='KING'\n        grid[newColumn][newRow].piece.image=REDKING",
+        "peekOfCode": "def move(grid, piecePosition, newPosition, TOTALBLACK, TOTALRED):\n    resetColours(grid, piecePosition)\n    newColumn, newRow = newPosition\n    oldColumn, oldRow = piecePosition\n    piece = grid[oldColumn][oldRow].piece\n    grid[newColumn][newRow].piece=piece\n    grid[oldColumn][oldRow].piece = None\n    if newColumn==7 and grid[newColumn][newRow].piece.team=='R':\n        grid[newColumn][newRow].piece.type='KING'\n        grid[newColumn][newRow].piece.image=REDKING",
         "detail": "checkers",
         "documentation": {}
     },
@@ -312,7 +301,7 @@
         "kind": 2,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "def checkers(WIDTH, ROWS):\n    grid = make_grid(ROWS, WIDTH)\n    highlightedPiece = None\n    currMove = 'G'\n    while True:\n        for event in pygame.event.get():\n            if event.type== pygame.QUIT:\n                print('EXIT SUCCESSFUL')\n                pygame.quit()\n                sys.exit()",
+        "peekOfCode": "def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):\n    while True:\n        grid = make_grid(ROWS, WIDTH)\n        highlightedPiece = None\n        currMove = 'B'\n        while True:\n            if TOTALBLACK == 0:\n                return 'Player 1'\n            if TOTALRED == 0:\n                return 'Player 2'",
         "detail": "checkers",
         "documentation": {}
     },
@@ -321,7 +310,7 @@
         "kind": 5,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "WIDTH = 800\nROWS = 8\nRED= pygame.image.load('assets/red.png')\nGREEN= pygame.image.load('assets/black.png')\nREDKING = pygame.image.load('assets/redKing.png')\nGREENKING = pygame.image.load('assets/blackKing.png')\nWHITE = (255,255,255)\nGRAY = (100,100,100)\nORANGE = (235, 168, 52)\nBLUE = (76, 252, 241)",
+        "peekOfCode": "WIDTH = 800\nROWS = 8\n# import piece images\nRED= pygame.image.load('assets/red.png')\nBLACK= pygame.image.load('assets/black.png')\nREDKING = pygame.image.load('assets/redKing.png')\nBLACKKING = pygame.image.load('assets/blackKing.png')\nTOTALBLACK = 12\nTOTALRED =12\npygame.init()",
         "detail": "checkers",
         "documentation": {}
     },
@@ -330,7 +319,7 @@
         "kind": 5,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "ROWS = 8\nRED= pygame.image.load('assets/red.png')\nGREEN= pygame.image.load('assets/black.png')\nREDKING = pygame.image.load('assets/redKing.png')\nGREENKING = pygame.image.load('assets/blackKing.png')\nWHITE = (255,255,255)\nGRAY = (100,100,100)\nORANGE = (235, 168, 52)\nBLUE = (76, 252, 241)\n# pause = False",
+        "peekOfCode": "ROWS = 8\n# import piece images\nRED= pygame.image.load('assets/red.png')\nBLACK= pygame.image.load('assets/black.png')\nREDKING = pygame.image.load('assets/redKing.png')\nBLACKKING = pygame.image.load('assets/blackKing.png')\nTOTALBLACK = 12\nTOTALRED =12\npygame.init()\nSCREEN = pygame.display.set_mode((800,800))",
         "detail": "checkers",
         "documentation": {}
     },
@@ -339,79 +328,43 @@
         "kind": 5,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "REDKING = pygame.image.load('assets/redKing.png')\nGREENKING = pygame.image.load('assets/blackKing.png')\nWHITE = (255,255,255)\nGRAY = (100,100,100)\nORANGE = (235, 168, 52)\nBLUE = (76, 252, 241)\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH,WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)",
+        "peekOfCode": "REDKING = pygame.image.load('assets/redKing.png')\nBLACKKING = pygame.image.load('assets/blackKing.png')\nTOTALBLACK = 12\nTOTALRED =12\npygame.init()\nSCREEN = pygame.display.set_mode((800,800))\n# surface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row",
         "detail": "checkers",
         "documentation": {}
     },
     {
-        "label": "GREENKING",
+        "label": "BLACKKING",
         "kind": 5,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "GREENKING = pygame.image.load('assets/blackKing.png')\nWHITE = (255,255,255)\nGRAY = (100,100,100)\nORANGE = (235, 168, 52)\nBLUE = (76, 252, 241)\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH,WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Checkers')",
+        "peekOfCode": "BLACKKING = pygame.image.load('assets/blackKing.png')\nTOTALBLACK = 12\nTOTALRED =12\npygame.init()\nSCREEN = pygame.display.set_mode((800,800))\n# surface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col",
         "detail": "checkers",
         "documentation": {}
     },
     {
-        "label": "WHITE",
+        "label": "TOTALBLACK",
         "kind": 5,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "WHITE = (255,255,255)\nGRAY = (100,100,100)\nORANGE = (235, 168, 52)\nBLUE = (76, 252, 241)\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH,WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Checkers')\npriorMoves=[]",
+        "peekOfCode": "TOTALBLACK = 12\nTOTALRED =12\npygame.init()\nSCREEN = pygame.display.set_mode((800,800))\n# surface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col\n        self.x = int(row * width)",
         "detail": "checkers",
         "documentation": {}
     },
     {
-        "label": "GRAY",
+        "label": "SCREEN",
         "kind": 5,
         "importPath": "checkers",
         "description": "checkers",
-        "peekOfCode": "GRAY = (100,100,100)\nORANGE = (235, 168, 52)\nBLUE = (76, 252, 241)\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH,WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Checkers')\npriorMoves=[]\nclass Node:",
+        "peekOfCode": "SCREEN = pygame.display.set_mode((800,800))\n# surface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col\n        self.x = int(row * width)\n        self.y = int(col * width)\n        self.colour = (255,255,255)\n        self.piece = None",
         "detail": "checkers",
         "documentation": {}
     },
     {
-        "label": "ORANGE",
-        "kind": 5,
-        "importPath": "checkers",
-        "description": "checkers",
-        "peekOfCode": "ORANGE = (235, 168, 52)\nBLUE = (76, 252, 241)\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH,WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Checkers')\npriorMoves=[]\nclass Node:\n    def __init__(self, row, col, width):",
-        "detail": "checkers",
-        "documentation": {}
-    },
-    {
-        "label": "BLUE",
-        "kind": 5,
-        "importPath": "checkers",
-        "description": "checkers",
-        "peekOfCode": "BLUE = (76, 252, 241)\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH,WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Checkers')\npriorMoves=[]\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row",
-        "detail": "checkers",
-        "documentation": {}
-    },
-    {
-        "label": "WIN",
-        "kind": 5,
-        "importPath": "checkers",
-        "description": "checkers",
-        "peekOfCode": "WIN = pygame.display.set_mode((WIDTH,WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Checkers')\npriorMoves=[]\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col\n        self.x = int(row * width)\n        self.y = int(col * width)",
-        "detail": "checkers",
-        "documentation": {}
-    },
-    {
-        "label": "surface",
-        "kind": 5,
-        "importPath": "checkers",
-        "description": "checkers",
-        "peekOfCode": "surface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Checkers')\npriorMoves=[]\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col\n        self.x = int(row * width)\n        self.y = int(col * width)\n        self.colour = WHITE",
-        "detail": "checkers",
-        "documentation": {}
-    },
-    {
-        "label": "get_font",
+        "label": "win",
         "kind": 2,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "def get_font(size):\n    return pygame.font.Font(\"assets/font.ttf\", size)\ndef play_checkers():\n    pygame.display.set_caption(\"Checkers\")\n    SCREEN.fill(\"black\")\n    checkers(800, 8)\ndef play_tic_tac_toe():\n    pygame.display.set_caption(\"Tic Tac Toe\")\n    SCREEN.fill(\"black\")\n    tic_tac_toe(800, 3)",
+        "peekOfCode": "def win(winner):\n     if winner == 'Player 1':\n         P1_WINS = P1_WINS + 1\n     elif winner == 'Player 2':\n         P2_WINS = P2_WINS + 1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        WINNER = winner + \" wins\"\n        pygame.display.set_caption(WINNER)",
         "detail": "menu",
         "documentation": {}
     },
@@ -420,7 +373,7 @@
         "kind": 2,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "def play_checkers():\n    pygame.display.set_caption(\"Checkers\")\n    SCREEN.fill(\"black\")\n    checkers(800, 8)\ndef play_tic_tac_toe():\n    pygame.display.set_caption(\"Tic Tac Toe\")\n    SCREEN.fill(\"black\")\n    tic_tac_toe(800, 3)\ndef options():\n    while True:",
+        "peekOfCode": "def play_checkers():\n    pygame.display.set_caption(\"Checkers\")\n    SCREEN.fill(\"black\")\n    win(checkers(800, 8, 12, 12))\ndef play_tic_tac_toe():\n    pygame.display.set_caption(\"Tic-Tac-Toe\")\n    SCREEN.fill(\"black\")\n    win(tic_tac_toe(800, 3))\ndef player_stats():\n    while True:",
         "detail": "menu",
         "documentation": {}
     },
@@ -429,16 +382,16 @@
         "kind": 2,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "def play_tic_tac_toe():\n    pygame.display.set_caption(\"Tic Tac Toe\")\n    SCREEN.fill(\"black\")\n    tic_tac_toe(800, 3)\ndef options():\n    while True:\n        OPTIONS_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"white\")\n        OPTIONS_TEXT = get_font(45).render(\"This is the OPTIONS screen\", True, \"Black\")\n        OPTIONS_RECT = OPTIONS_TEXT.get_rect(center=(400, 400))",
+        "peekOfCode": "def play_tic_tac_toe():\n    pygame.display.set_caption(\"Tic-Tac-Toe\")\n    SCREEN.fill(\"black\")\n    win(tic_tac_toe(800, 3))\ndef player_stats():\n    while True:\n        PLAYER_STATS_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"white\")\n        PLAYER_STATS_TEXT1 = pygame.font.Font(\"assets/font.ttf\", 25).render(\"This is the\", True, \"Black\")\n        PLAYER_STATS_RECT1 = PLAYER_STATS_TEXT1.get_rect(center=(400, 400))",
         "detail": "menu",
         "documentation": {}
     },
     {
-        "label": "options",
+        "label": "player_stats",
         "kind": 2,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "def options():\n    while True:\n        OPTIONS_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"white\")\n        OPTIONS_TEXT = get_font(45).render(\"This is the OPTIONS screen\", True, \"Black\")\n        OPTIONS_RECT = OPTIONS_TEXT.get_rect(center=(400, 400))\n        SCREEN.blit(OPTIONS_TEXT, OPTIONS_RECT)\n        OPTIONS_BACK = Button(\n            image=None,\n            pos=(400, 600),",
+        "peekOfCode": "def player_stats():\n    while True:\n        PLAYER_STATS_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"white\")\n        PLAYER_STATS_TEXT1 = pygame.font.Font(\"assets/font.ttf\", 25).render(\"This is the\", True, \"Black\")\n        PLAYER_STATS_RECT1 = PLAYER_STATS_TEXT1.get_rect(center=(400, 400))\n        SCREEN.blit(PLAYER_STATS_TEXT1, PLAYER_STATS_RECT1)\n        PLAYER_STATS_TEXT2 = pygame.font.Font(\"assets/font.ttf\", 25).render(\"PLAYER STATISTICS SCREEN\", True, \"Black\")\n        PLAYER_STATS_RECT2 = PLAYER_STATS_TEXT2.get_rect(center=(400, 450))\n        SCREEN.blit(PLAYER_STATS_TEXT2, PLAYER_STATS_RECT2)",
         "detail": "menu",
         "documentation": {}
     },
@@ -447,7 +400,7 @@
         "kind": 2,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "def main_menu():\n    while True:\n        SCREEN.blit(BG, (0, 0))\n        MENU_MOUSE_POS = pygame.mouse.get_pos()\n        MENU_TEXT = get_font(100).render(\"MAIN MENU\", True, \"#b68f40\")\n        MENU_RECT = MENU_TEXT.get_rect(center=(400, 100))\n        CHECKERS_BUTTON = Button(\n            None,\n            pos=(400, 250),\n            text_input=\"CHECKERS\",",
+        "peekOfCode": "def main_menu():\n    while True:\n        SCREEN.blit(BG, (0, 0))\n        MENU_MOUSE_POS = pygame.mouse.get_pos()\n        MENU_TEXT = pygame.font.Font(\"assets/font.ttf\", 60).render(\"MAIN MENU\", True, \"Grey\")\n        MENU_RECT = MENU_TEXT.get_rect(center=(400, 100))\n        CHECKERS_BUTTON = Button(pos=(400, 250),\n                            input=\"CHECKERS\", font=pygame.font.Font(\"assets/font.ttf\", 40), base=\"White\", hover=\"Green\")\n        TIC_TAC_TOE_BUTTON = Button(pos=(400, 325),\n                            input=\"TIC-TAC-TOE\", font=pygame.font.Font(\"assets/font.ttf\", 40), base=\"White\", hover=\"Green\")",
         "detail": "menu",
         "documentation": {}
     },
@@ -456,7 +409,7 @@
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "SCREEN = pygame.display.set_mode((800, 800))\npygame.display.set_caption(\"Menu\")\nBG = pygame.image.load(\"assets/Background.png\")\ndef get_font(size):\n    return pygame.font.Font(\"assets/font.ttf\", size)\ndef play_checkers():\n    pygame.display.set_caption(\"Checkers\")\n    SCREEN.fill(\"black\")\n    checkers(800, 8)\ndef play_tic_tac_toe():",
+        "peekOfCode": "SCREEN = pygame.display.set_mode((800, 800))\npygame.display.set_caption(\"Menu\")\nBG = pygame.image.load(\"assets/Background.png\")\nP1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS = P1_WINS + 1\n     elif winner == 'Player 2':\n         P2_WINS = P2_WINS + 1",
         "detail": "menu",
         "documentation": {}
     },
@@ -465,8 +418,62 @@
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "BG = pygame.image.load(\"assets/Background.png\")\ndef get_font(size):\n    return pygame.font.Font(\"assets/font.ttf\", size)\ndef play_checkers():\n    pygame.display.set_caption(\"Checkers\")\n    SCREEN.fill(\"black\")\n    checkers(800, 8)\ndef play_tic_tac_toe():\n    pygame.display.set_caption(\"Tic Tac Toe\")\n    SCREEN.fill(\"black\")",
+        "peekOfCode": "BG = pygame.image.load(\"assets/Background.png\")\nP1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS = P1_WINS + 1\n     elif winner == 'Player 2':\n         P2_WINS = P2_WINS + 1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()",
         "detail": "menu",
+        "documentation": {}
+    },
+    {
+        "label": "P1_WINS",
+        "kind": 5,
+        "importPath": "menu",
+        "description": "menu",
+        "peekOfCode": "P1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS = P1_WINS + 1\n     elif winner == 'Player 2':\n         P2_WINS = P2_WINS + 1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")",
+        "detail": "menu",
+        "documentation": {}
+    },
+    {
+        "label": "P2_WINS",
+        "kind": 5,
+        "importPath": "menu",
+        "description": "menu",
+        "peekOfCode": "P2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS = P1_WINS + 1\n     elif winner == 'Player 2':\n         P2_WINS = P2_WINS + 1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        WINNER = winner + \" wins\"",
+        "detail": "menu",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "kind": 2,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "def settings(current_game, PLAYER_STATS):\n    while True:\n        SCREEN.blit(BG, (0, 0))\n        SETTINGS_MOUSE_POS = pygame.mouse.get_pos()\n        SETTINGS_TEXT = pygame.font.Font(\"assets/font.ttf\", 50).render(\"SETTINGS\", True, \"Grey\")\n        SETTINGS_RECT = SETTINGS_TEXT.get_rect(center=(400, 100))\n        PLAYER_STATS_BUTTON = Button(pos=(400, 250), \n                            input=\"Player Stats: \" + PLAYER_STATS, font=pygame.font.Font(\"assets/font.ttf\", 25), base=\"White\", hover=\"Green\")\n        RETURN_BUTTON = Button(pos=(400, 600), \n                            input=\"RETURN TO GAME\", font=pygame.font.Font(\"assets/font.ttf\", 25), base=\"White\", hover=\"Green\")",
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "SCREEN",
+        "kind": 5,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "SCREEN = pygame.display.set_mode((800, 800))\npygame.display.set_caption(\"Menu\")\nBG = pygame.image.load(\"assets/Background.png\")\nPLAYER_STATS = 'Enabled'\ndef settings(current_game, PLAYER_STATS):\n    while True:\n        SCREEN.blit(BG, (0, 0))\n        SETTINGS_MOUSE_POS = pygame.mouse.get_pos()\n        SETTINGS_TEXT = pygame.font.Font(\"assets/font.ttf\", 50).render(\"SETTINGS\", True, \"Grey\")\n        SETTINGS_RECT = SETTINGS_TEXT.get_rect(center=(400, 100))",
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "BG",
+        "kind": 5,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "BG = pygame.image.load(\"assets/Background.png\")\nPLAYER_STATS = 'Enabled'\ndef settings(current_game, PLAYER_STATS):\n    while True:\n        SCREEN.blit(BG, (0, 0))\n        SETTINGS_MOUSE_POS = pygame.mouse.get_pos()\n        SETTINGS_TEXT = pygame.font.Font(\"assets/font.ttf\", 50).render(\"SETTINGS\", True, \"Grey\")\n        SETTINGS_RECT = SETTINGS_TEXT.get_rect(center=(400, 100))\n        PLAYER_STATS_BUTTON = Button(pos=(400, 250), \n                            input=\"Player Stats: \" + PLAYER_STATS, font=pygame.font.Font(\"assets/font.ttf\", 25), base=\"White\", hover=\"Green\")",
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "PLAYER_STATS",
+        "kind": 5,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "PLAYER_STATS = 'Enabled'\ndef settings(current_game, PLAYER_STATS):\n    while True:\n        SCREEN.blit(BG, (0, 0))\n        SETTINGS_MOUSE_POS = pygame.mouse.get_pos()\n        SETTINGS_TEXT = pygame.font.Font(\"assets/font.ttf\", 50).render(\"SETTINGS\", True, \"Grey\")\n        SETTINGS_RECT = SETTINGS_TEXT.get_rect(center=(400, 100))\n        PLAYER_STATS_BUTTON = Button(pos=(400, 250), \n                            input=\"Player Stats: \" + PLAYER_STATS, font=pygame.font.Font(\"assets/font.ttf\", 25), base=\"White\", hover=\"Green\")\n        RETURN_BUTTON = Button(pos=(400, 600), ",
+        "detail": "settings",
         "documentation": {}
     },
     {

@@ -48,6 +48,11 @@ def play_checkers():
     SCREEN.fill("black")
     win(checkers(800, 8, 12, 12))
 
+def play_tic_tac_toe():
+    pygame.display.set_caption("Tic-Tac-Toe")
+    SCREEN.fill("black")
+    win(tic_tac_toe(800, 3))
+
 
 def player_stats():
     while True:
@@ -89,6 +94,8 @@ def main_menu():
 
         CHECKERS_BUTTON = Button(pos=(400, 250),
                             input="CHECKERS", font=pygame.font.Font("assets/font.ttf", 40), base="White", hover="Green")
+        TIC_TAC_TOE_BUTTON = Button(pos=(400, 325),
+                            input="TIC-TAC-TOE", font=pygame.font.Font("assets/font.ttf", 40), base="White", hover="Green")
         PLAYER_STATS_BUTTON = Button(pos=(400, 400),
                             input="PLAYER STATS", font=pygame.font.Font("assets/font.ttf", 40), base="White", hover="Green")
         QUIT_BUTTON = Button(pos=(400, 550),
@@ -96,7 +103,7 @@ def main_menu():
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
-        for button in [CHECKERS_BUTTON, PLAYER_STATS_BUTTON, QUIT_BUTTON]:
+        for button in [CHECKERS_BUTTON, TIC_TAC_TOE_BUTTON  ,PLAYER_STATS_BUTTON, QUIT_BUTTON]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(SCREEN)
         for event in pygame.event.get():
@@ -106,6 +113,8 @@ def main_menu():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if CHECKERS_BUTTON.checkForInput(MENU_MOUSE_POS):
                     play_checkers()
+                if TIC_TAC_TOE_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    play_tic_tac_toe()
                 if PLAYER_STATS_BUTTON.checkForInput(MENU_MOUSE_POS):
                     player_stats()
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
@@ -113,6 +122,5 @@ def main_menu():
                     sys.exit()
 
         pygame.display.update()
-
 
 main_menu()
