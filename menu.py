@@ -2,6 +2,7 @@ import pygame, sys
 from button import Button
 from checkers import checkers
 from tic_tac_toe import tic_tac_toe
+from player_stats import player_stats
 
 pygame.init()
 
@@ -10,17 +11,30 @@ pygame.display.set_caption("Menu")
 
 BG = pygame.image.load("assets/Background.png")
 
-P1_WINS = 0
-P2_WINS = 0
+CHECKERS_WINS = [0, 0]
+CONNECT_4_WINS = [0, 0]
+TIC_TAC_TOE_WINS = [0, 0]
 
 
-def win(winner):
-     global P1_WINS, P2_WINS
-     if winner == 'Player 1':
-         P1_WINS +=1
-     elif winner == 'Player 2':
-         P2_WINS +=1
-     while True:
+def win(winner, game):
+
+    if game == 'Checkers':
+        if winner == 'Player_1':
+            CHECKERS_WINS[0] += 1
+        elif winner == 'Player_2':
+            CHECKERS_WINS[1] += 1
+    elif game == 'Connect 4':
+        if winner == 'Player_1':
+            CONNECT_4_WINS[0] += 1
+        elif winner == 'Player_2':
+            CONNECT_4_WINS[1] += 1
+    elif game == 'Tic-Tac-Toe':
+        if winner == 'Player_1':
+            TIC_TAC_TOE_WINS[0] += 1
+        elif winner == 'Player_2':
+            TIC_TAC_TOE_WINS[1] += 1
+
+    while True:
         WINNER_MOUSE_POS = pygame.mouse.get_pos()
         SCREEN.fill("black")
         WINNER = winner + " wins"
@@ -47,41 +61,12 @@ def win(winner):
 def play_checkers():
     pygame.display.set_caption("Checkers")
     SCREEN.fill("black")
-    win(checkers(800, 8, 12, 12))
+    win(checkers(800, 8, 12, 12), 'Checkers')
 
 def play_tic_tac_toe():
     pygame.display.set_caption("Tic-Tac-Toe")
     SCREEN.fill("black")
-    win(tic_tac_toe(800, 3))
-
-
-def player_stats():
-    while True:
-        PLAYER_STATS_MOUSE_POS = pygame.mouse.get_pos()
-
-        SCREEN.fill("white")
-
-        PLAYER_STATS_TEXT1 = pygame.font.Font("assets/font.ttf", 25).render("This is the", True, "Black")
-        PLAYER_STATS_RECT1 = PLAYER_STATS_TEXT1.get_rect(center=(400, 400))
-        SCREEN.blit(PLAYER_STATS_TEXT1, PLAYER_STATS_RECT1)
-        PLAYER_STATS_TEXT2 = pygame.font.Font("assets/font.ttf", 25).render("PLAYER STATISTICS SCREEN", True, "Black")
-        PLAYER_STATS_RECT2 = PLAYER_STATS_TEXT2.get_rect(center=(400, 450))
-        SCREEN.blit(PLAYER_STATS_TEXT2, PLAYER_STATS_RECT2)
-
-        PLAYER_STATS_BACK = Button(pos=(400, 600), input="BACK", font=pygame.font.Font("assets/font.ttf", 50), base="Black", hover="Green")
-
-        PLAYER_STATS_BACK.changeColor(PLAYER_STATS_MOUSE_POS)
-        PLAYER_STATS_BACK.update(SCREEN)
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if PLAYER_STATS_BACK.checkForInput(PLAYER_STATS_MOUSE_POS):
-                    main_menu()
-
-        pygame.display.update()
+    win(tic_tac_toe(800, 3), 'Tic-Tac-Toe')
 
 
 def main_menu():
@@ -117,7 +102,7 @@ def main_menu():
                 if TIC_TAC_TOE_BUTTON.checkForInput(MENU_MOUSE_POS):
                     play_tic_tac_toe()
                 if PLAYER_STATS_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    player_stats()
+                    player_stats( CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS)
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
