@@ -117,9 +117,9 @@ def tic_tac_toe(WIDTH,ROWS):
     while True:
 
         if check_winner(grid, X_IMAGE):
-            return 'Player 1'
+            return 'Player_1'
         elif check_winner(grid, O_IMAGE):
-            return 'Player 2'
+            return 'Player_2'
         elif check_draw(grid):
             return 'Draw'
 

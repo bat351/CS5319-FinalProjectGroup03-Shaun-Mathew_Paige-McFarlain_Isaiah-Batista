@@ -59,6 +59,14 @@
         "documentation": {}
     },
     {
+        "label": "Button",
+        "importPath": "button",
+        "description": "button",
+        "isExtraImport": true,
+        "detail": "button",
+        "documentation": {}
+    },
+    {
         "label": "checkers",
         "importPath": "checkers",
         "description": "checkers",
@@ -80,6 +88,14 @@
         "description": "tic_tac_toe",
         "isExtraImport": true,
         "detail": "tic_tac_toe",
+        "documentation": {}
+    },
+    {
+        "label": "player_stats",
+        "importPath": "player_stats",
+        "description": "player_stats",
+        "isExtraImport": true,
+        "detail": "player_stats",
         "documentation": {}
     },
     {
@@ -348,7 +364,7 @@
         "kind": 2,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "def win(winner):\n     global P1_WINS, P2_WINS\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        WINNER = winner + \" wins\"",
+        "peekOfCode": "def win(winner, game):\n    if game == 'Checkers':\n        if winner == 'Player_1':\n            CHECKERS_WINS[0] += 1\n        elif winner == 'Player_2':\n            CHECKERS_WINS[1] += 1\n    elif game == 'Connect 4':\n        if winner == 'Player_1':\n            CONNECT_4_WINS[0] += 1\n        elif winner == 'Player_2':",
         "detail": "menu",
         "documentation": {}
     },
@@ -357,7 +373,7 @@
         "kind": 2,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "def play_checkers():\n    pygame.display.set_caption(\"Checkers\")\n    SCREEN.fill(\"black\")\n    win(checkers(800, 8, 12, 12))\ndef play_tic_tac_toe():\n    pygame.display.set_caption(\"Tic-Tac-Toe\")\n    SCREEN.fill(\"black\")\n    win(tic_tac_toe(800, 3))\ndef player_stats():\n    while True:",
+        "peekOfCode": "def play_checkers():\n    pygame.display.set_caption(\"Checkers\")\n    SCREEN.fill(\"black\")\n    win(checkers(800, 8, 12, 12), 'Checkers')\ndef play_tic_tac_toe():\n    pygame.display.set_caption(\"Tic-Tac-Toe\")\n    SCREEN.fill(\"black\")\n    win(tic_tac_toe(800, 3), 'Tic-Tac-Toe')\ndef main_menu():\n    while True:",
         "detail": "menu",
         "documentation": {}
     },
@@ -366,16 +382,7 @@
         "kind": 2,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "def play_tic_tac_toe():\n    pygame.display.set_caption(\"Tic-Tac-Toe\")\n    SCREEN.fill(\"black\")\n    win(tic_tac_toe(800, 3))\ndef player_stats():\n    while True:\n        PLAYER_STATS_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"white\")\n        PLAYER_STATS_TEXT1 = pygame.font.Font(\"assets/font.ttf\", 25).render(\"This is the\", True, \"Black\")\n        PLAYER_STATS_RECT1 = PLAYER_STATS_TEXT1.get_rect(center=(400, 400))",
-        "detail": "menu",
-        "documentation": {}
-    },
-    {
-        "label": "player_stats",
-        "kind": 2,
-        "importPath": "menu",
-        "description": "menu",
-        "peekOfCode": "def player_stats():\n    while True:\n        PLAYER_STATS_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"white\")\n        PLAYER_STATS_TEXT1 = pygame.font.Font(\"assets/font.ttf\", 25).render(\"This is the\", True, \"Black\")\n        PLAYER_STATS_RECT1 = PLAYER_STATS_TEXT1.get_rect(center=(400, 400))\n        SCREEN.blit(PLAYER_STATS_TEXT1, PLAYER_STATS_RECT1)\n        PLAYER_STATS_TEXT2 = pygame.font.Font(\"assets/font.ttf\", 25).render(\"PLAYER STATISTICS SCREEN\", True, \"Black\")\n        PLAYER_STATS_RECT2 = PLAYER_STATS_TEXT2.get_rect(center=(400, 450))\n        SCREEN.blit(PLAYER_STATS_TEXT2, PLAYER_STATS_RECT2)",
+        "peekOfCode": "def play_tic_tac_toe():\n    pygame.display.set_caption(\"Tic-Tac-Toe\")\n    SCREEN.fill(\"black\")\n    win(tic_tac_toe(800, 3), 'Tic-Tac-Toe')\ndef main_menu():\n    while True:\n        SCREEN.blit(BG, (0, 0))\n        MENU_MOUSE_POS = pygame.mouse.get_pos()\n        MENU_TEXT = pygame.font.Font(\"assets/font.ttf\", 60).render(\"MAIN MENU\", True, \"Grey\")\n        MENU_RECT = MENU_TEXT.get_rect(center=(400, 100))",
         "detail": "menu",
         "documentation": {}
     },
@@ -393,7 +400,7 @@
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "SCREEN = pygame.display.set_mode((800, 800))\npygame.display.set_caption(\"Menu\")\nBG = pygame.image.load(\"assets/Background.png\")\nP1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     global P1_WINS, P2_WINS\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':",
+        "peekOfCode": "SCREEN = pygame.display.set_mode((800, 800))\npygame.display.set_caption(\"Menu\")\nBG = pygame.image.load(\"assets/Background.png\")\nCHECKERS_WINS = [0, 0]\nCONNECT_4_WINS = [0, 0]\nTIC_TAC_TOE_WINS = [0, 0]\ndef win(winner, game):\n    if game == 'Checkers':\n        if winner == 'Player_1':\n            CHECKERS_WINS[0] += 1",
         "detail": "menu",
         "documentation": {}
     },
@@ -402,26 +409,53 @@
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "BG = pygame.image.load(\"assets/Background.png\")\nP1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     global P1_WINS, P2_WINS\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:",
+        "peekOfCode": "BG = pygame.image.load(\"assets/Background.png\")\nCHECKERS_WINS = [0, 0]\nCONNECT_4_WINS = [0, 0]\nTIC_TAC_TOE_WINS = [0, 0]\ndef win(winner, game):\n    if game == 'Checkers':\n        if winner == 'Player_1':\n            CHECKERS_WINS[0] += 1\n        elif winner == 'Player_2':\n            CHECKERS_WINS[1] += 1",
         "detail": "menu",
         "documentation": {}
     },
     {
-        "label": "P1_WINS",
+        "label": "CHECKERS_WINS",
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "P1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     global P1_WINS, P2_WINS\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()",
+        "peekOfCode": "CHECKERS_WINS = [0, 0]\nCONNECT_4_WINS = [0, 0]\nTIC_TAC_TOE_WINS = [0, 0]\ndef win(winner, game):\n    if game == 'Checkers':\n        if winner == 'Player_1':\n            CHECKERS_WINS[0] += 1\n        elif winner == 'Player_2':\n            CHECKERS_WINS[1] += 1\n    elif game == 'Connect 4':",
         "detail": "menu",
         "documentation": {}
     },
     {
-        "label": "P2_WINS",
+        "label": "CONNECT_4_WINS",
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "P2_WINS = 0\ndef win(winner):\n     global P1_WINS, P2_WINS\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")",
+        "peekOfCode": "CONNECT_4_WINS = [0, 0]\nTIC_TAC_TOE_WINS = [0, 0]\ndef win(winner, game):\n    if game == 'Checkers':\n        if winner == 'Player_1':\n            CHECKERS_WINS[0] += 1\n        elif winner == 'Player_2':\n            CHECKERS_WINS[1] += 1\n    elif game == 'Connect 4':\n        if winner == 'Player_1':",
         "detail": "menu",
+        "documentation": {}
+    },
+    {
+        "label": "TIC_TAC_TOE_WINS",
+        "kind": 5,
+        "importPath": "menu",
+        "description": "menu",
+        "peekOfCode": "TIC_TAC_TOE_WINS = [0, 0]\ndef win(winner, game):\n    if game == 'Checkers':\n        if winner == 'Player_1':\n            CHECKERS_WINS[0] += 1\n        elif winner == 'Player_2':\n            CHECKERS_WINS[1] += 1\n    elif game == 'Connect 4':\n        if winner == 'Player_1':\n            CONNECT_4_WINS[0] += 1",
+        "detail": "menu",
+        "documentation": {}
+    },
+    {
+        "label": "player_stats",
+        "kind": 2,
+        "importPath": "player_stats",
+        "description": "player_stats",
+        "peekOfCode": "def player_stats(CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS):\n    while True:\n        MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        TITLE = pygame.font.Font(\"assets/font.ttf\", 30).render(\n            \"PLAYER STATISTICS\", True, \"White\"\n        )\n        TRECT = TITLE.get_rect(center=(400, 75))\n        SCREEN.blit(TITLE, TRECT)\n        P1_LABEL = pygame.font.Font(\"assets/font.ttf\", 25).render(",
+        "detail": "player_stats",
+        "documentation": {}
+    },
+    {
+        "label": "SCREEN",
+        "kind": 5,
+        "importPath": "player_stats",
+        "description": "player_stats",
+        "peekOfCode": "SCREEN = pygame.display.set_mode((800, 800))\npygame.display.set_caption(\"Player Statistics\")\ndef player_stats(CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS):\n    while True:\n        MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        TITLE = pygame.font.Font(\"assets/font.ttf\", 30).render(\n            \"PLAYER STATISTICS\", True, \"White\"\n        )\n        TRECT = TITLE.get_rect(center=(400, 75))",
+        "detail": "player_stats",
         "documentation": {}
     },
     {
@@ -528,7 +562,7 @@
         "kind": 2,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "def check_draw(grid):\n    if all([grid[i][j].piece is not None for i in range(ROWS) for j in range(ROWS)]):\n        return True\n    return False\ndef tic_tac_toe(WIDTH,ROWS):\n    grid = make_grid(ROWS, WIDTH)\n    currMove = 'X'\n    while True:\n        if check_winner(grid, X_IMAGE):\n            return 'Player 1'",
+        "peekOfCode": "def check_draw(grid):\n    if all([grid[i][j].piece is not None for i in range(ROWS) for j in range(ROWS)]):\n        return True\n    return False\ndef tic_tac_toe(WIDTH,ROWS):\n    grid = make_grid(ROWS, WIDTH)\n    currMove = 'X'\n    while True:\n        if check_winner(grid, X_IMAGE):\n            return 'Player_1'",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -537,7 +571,7 @@
         "kind": 2,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "def tic_tac_toe(WIDTH,ROWS):\n    grid = make_grid(ROWS, WIDTH)\n    currMove = 'X'\n    while True:\n        if check_winner(grid, X_IMAGE):\n            return 'Player 1'\n        elif check_winner(grid, O_IMAGE):\n            return 'Player 2'\n        elif check_draw(grid):\n            return 'Draw'",
+        "peekOfCode": "def tic_tac_toe(WIDTH,ROWS):\n    grid = make_grid(ROWS, WIDTH)\n    currMove = 'X'\n    while True:\n        if check_winner(grid, X_IMAGE):\n            return 'Player_1'\n        elif check_winner(grid, O_IMAGE):\n            return 'Player_2'\n        elif check_draw(grid):\n            return 'Draw'",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
