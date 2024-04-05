@@ -524,11 +524,20 @@
         "documentation": {}
     },
     {
+        "label": "check_draw",
+        "kind": 2,
+        "importPath": "tic_tac_toe",
+        "description": "tic_tac_toe",
+        "peekOfCode": "def check_draw(grid):\n    if all([grid[i][j].piece is not None for i in range(ROWS) for j in range(ROWS)]):\n        return True\n    return False\ndef tic_tac_toe(WIDTH,ROWS):\n    grid = make_grid(ROWS, WIDTH)\n    currMove = 'X'\n    while True:\n        if check_winner(grid, X_IMAGE):\n            return 'Player 1'",
+        "detail": "tic_tac_toe",
+        "documentation": {}
+    },
+    {
         "label": "tic_tac_toe",
         "kind": 2,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "def tic_tac_toe(WIDTH,ROWS):\n    grid = make_grid(ROWS, WIDTH)\n    currMove = 'X'\n    while True:\n        if check_winner(grid, X_IMAGE):\n            return 'Player 1'\n        elif check_winner(grid, O_IMAGE):\n            return 'Player 2'\n        for event in pygame.event.get():\n            if event.type == pygame.QUIT:",
+        "peekOfCode": "def tic_tac_toe(WIDTH,ROWS):\n    grid = make_grid(ROWS, WIDTH)\n    currMove = 'X'\n    while True:\n        if check_winner(grid, X_IMAGE):\n            return 'Player 1'\n        elif check_winner(grid, O_IMAGE):\n            return 'Player 2'\n        elif check_draw(grid):\n            return 'Draw'",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -537,7 +546,7 @@
         "kind": 5,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "WIDTH = 800\nROWS = 3\nX_IMAGE = pygame.image.load('assets/x.png')\nO_IMAGE = pygame.image.load('assets/o.png')\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))",
+        "peekOfCode": "WIDTH = 800\nROWS = 3\nX_IMAGE = pygame.image.load('assets/x.png')\nO_IMAGE = pygame.image.load('assets/o.png')\n# resize images\nX_IMAGE = pygame.transform.scale(X_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))\nO_IMAGE = pygame.transform.scale(O_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -546,7 +555,7 @@
         "kind": 5,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "ROWS = 3\nX_IMAGE = pygame.image.load('assets/x.png')\nO_IMAGE = pygame.image.load('assets/o.png')\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)",
+        "peekOfCode": "ROWS = 3\nX_IMAGE = pygame.image.load('assets/x.png')\nO_IMAGE = pygame.image.load('assets/o.png')\n# resize images\nX_IMAGE = pygame.transform.scale(X_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))\nO_IMAGE = pygame.transform.scale(O_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -555,7 +564,7 @@
         "kind": 5,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "X_IMAGE = pygame.image.load('assets/x.png')\nO_IMAGE = pygame.image.load('assets/o.png')\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')",
+        "peekOfCode": "X_IMAGE = pygame.image.load('assets/x.png')\nO_IMAGE = pygame.image.load('assets/o.png')\n# resize images\nX_IMAGE = pygame.transform.scale(X_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))\nO_IMAGE = pygame.transform.scale(O_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -564,7 +573,25 @@
         "kind": 5,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "O_IMAGE = pygame.image.load('assets/o.png')\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')\npriorMoves = []",
+        "peekOfCode": "O_IMAGE = pygame.image.load('assets/o.png')\n# resize images\nX_IMAGE = pygame.transform.scale(X_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))\nO_IMAGE = pygame.transform.scale(O_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))",
+        "detail": "tic_tac_toe",
+        "documentation": {}
+    },
+    {
+        "label": "X_IMAGE",
+        "kind": 5,
+        "importPath": "tic_tac_toe",
+        "description": "tic_tac_toe",
+        "peekOfCode": "X_IMAGE = pygame.transform.scale(X_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))\nO_IMAGE = pygame.transform.scale(O_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')",
+        "detail": "tic_tac_toe",
+        "documentation": {}
+    },
+    {
+        "label": "O_IMAGE",
+        "kind": 5,
+        "importPath": "tic_tac_toe",
+        "description": "tic_tac_toe",
+        "peekOfCode": "O_IMAGE = pygame.transform.scale(O_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')\npriorMoves = []",
         "detail": "tic_tac_toe",
         "documentation": {}
     },

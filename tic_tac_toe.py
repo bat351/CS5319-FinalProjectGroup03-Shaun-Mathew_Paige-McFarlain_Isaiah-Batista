@@ -9,6 +9,10 @@ ROWS = 3
 X_IMAGE = pygame.image.load('assets/x.png')
 O_IMAGE = pygame.image.load('assets/o.png')
 
+# resize images
+X_IMAGE = pygame.transform.scale(X_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))
+O_IMAGE = pygame.transform.scale(O_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))
+
 # Colors
 LINE_COLOR = (128, 128, 128)  # Light gray for grid lines
 BG_COLOR = (0, 0, 0)  # Black background
@@ -80,6 +84,7 @@ def make_move(grid, row, col, player):
     if grid[row][col].piece is None:
         if player == "X":
             grid[row][col].piece = Piece(X_IMAGE)
+
         else:
             grid[row][col].piece = Piece(O_IMAGE)
 
@@ -99,6 +104,12 @@ def check_winner(grid, player):
         return True
     return False
 
+def check_draw(grid):
+
+    if all([grid[i][j].piece is not None for i in range(ROWS) for j in range(ROWS)]):
+        return True
+    return False
+
 def tic_tac_toe(WIDTH,ROWS):
     grid = make_grid(ROWS, WIDTH)
     currMove = 'X'
@@ -109,6 +120,8 @@ def tic_tac_toe(WIDTH,ROWS):
             return 'Player 1'
         elif check_winner(grid, O_IMAGE):
             return 'Player 2'
+        elif check_draw(grid):
+            return 'Draw'
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
