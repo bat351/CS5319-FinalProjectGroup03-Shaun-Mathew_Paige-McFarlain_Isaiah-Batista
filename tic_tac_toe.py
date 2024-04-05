@@ -95,6 +95,12 @@ def tic_tac_toe(WIDTH,ROWS):
     currMove = 'X'
 
     while True:
+
+        if check_winner(grid, X_IMAGE):
+            return 'Player 1'
+        elif check_winner(grid, O_IMAGE):
+            return 'Player 2'
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 print('EXIT SUCCESSFUL')
@@ -121,14 +127,5 @@ def tic_tac_toe(WIDTH,ROWS):
                         currMove = 'X'
                     priorMoves.append((row, col))
 
-                    X_WIN = check_winner(grid, X_IMAGE)
-                    O_WIN = check_winner(grid, O_IMAGE)
-
-                    if X_WIN:
-                        print('X WINS')
-                        break
-                    if O_WIN:
-                        print('O WINS')
-                        break
 
         update_display(WIN, grid, ROWS, WIDTH)

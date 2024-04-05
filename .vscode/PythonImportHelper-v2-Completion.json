@@ -544,7 +544,7 @@
         "kind": 2,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "def tic_tac_toe(WIDTH,ROWS):\n    grid = make_grid(ROWS, WIDTH)\n    currMove = 'X'\n    while True:\n        for event in pygame.event.get():\n            if event.type == pygame.QUIT:\n                print('EXIT SUCCESSFUL')\n                pygame.quit()\n                sys.exit()\n            # if event.type == pygame.KEYDOWN:",
+        "peekOfCode": "def tic_tac_toe(WIDTH,ROWS):\n    grid = make_grid(ROWS, WIDTH)\n    currMove = 'X'\n    while True:\n        if check_winner(grid, X_IMAGE):\n            return 'Player 1'\n        elif check_winner(grid, O_IMAGE):\n            return 'Player 2'\n        for event in pygame.event.get():\n            if event.type == pygame.QUIT:",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
