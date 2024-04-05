@@ -3,13 +3,15 @@ import random
 import sys
 from itertools import combinations
 
-from checkers import ROWS, WIDTH
-
 WIDTH = 800
 ROWS = 3
 
 X_IMAGE = pygame.image.load('assets/x.png')
 O_IMAGE = pygame.image.load('assets/o.png')
+
+# Colors
+LINE_COLOR = (128, 128, 128)  # Light gray for grid lines
+BG_COLOR = (0, 0, 0)  # Black background
 
 # pause = False
 
@@ -20,46 +22,50 @@ pygame.display.set_caption('Tic Tac Toe')
 
 priorMoves = []
 
+
 class Node:
     def __init__(self, row, col, width):
         self.row = row
         self.col = col
         self.x = int(row * width)
         self.y = int(col * width)
-        self.colour = (255, 255, 255)
+        self.color = BG_COLOR  # Initially same as background
         self.piece = None
 
     def draw(self, WIN):
-        pygame.draw.rect(WIN, self.colour, (self.x, self.y, WIDTH / ROWS, WIDTH / ROWS))
+        pygame.draw.rect(WIN, self.color, (self.x, self.y, WIDTH / ROWS, WIDTH / ROWS))
         if self.piece:
             WIN.blit(self.piece.image, (self.x, self.y))
 
+
 def update_display(win, grid, rows, width):
+    win.fill(BG_COLOR)  # Clear the screen with background color
     for row in grid:
         for spot in row:
             spot.draw(win)
     draw_grid(win, rows, width)
     pygame.display.update()
 
+
 def make_grid(rows, width):
     grid = []
     gap = width // rows
-    count = 0
     for i in range(rows):
         grid.append([])
         for j in range(rows):
             node = Node(j, i, gap)
             grid[i].append(node)
-            count += 1
     return grid
 
+
 def draw_grid(win, rows, width):
-    WIN.blit(surface, (0, 0))
     gap = width // ROWS
     for i in range(rows):
-        pygame.draw.line(win, (128, 128, 128), (0, i * gap), (width, i * gap))
+        pygame.draw.line(
+            win, LINE_COLOR, (0, i * gap), (width, i * gap), width=4
+        )  # Thicker lines
         for j in range(rows):
-            pygame.draw.line(win, (128, 128, 128), (j * gap, 0), (j * gap, width))
+            pygame.draw.line(win, LINE_COLOR, (j * gap, 0), (j * gap, width), width=4)
 
 # def draw_pause():
 #     pygame.draw.rect(surface, (128, 128, 128, 150), [0, 0, WIDTH, WIDTH])
@@ -69,14 +75,17 @@ class Piece:
     def __init__(self, image):
         self.image = image
 
+
 def make_move(grid, row, col, player):
     if grid[row][col].piece is None:
-        if player == 'X':
+        if player == "X":
             grid[row][col].piece = Piece(X_IMAGE)
         else:
             grid[row][col].piece = Piece(O_IMAGE)
+
         return True
     return False
+
 
 def check_winner(grid, player):
     for i in range(ROWS):

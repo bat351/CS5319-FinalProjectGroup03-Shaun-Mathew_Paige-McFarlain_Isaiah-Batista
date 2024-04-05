@@ -75,22 +75,6 @@
         "documentation": {}
     },
     {
-        "label": "ROWS",
-        "importPath": "checkers",
-        "description": "checkers",
-        "isExtraImport": true,
-        "detail": "checkers",
-        "documentation": {}
-    },
-    {
-        "label": "WIDTH",
-        "importPath": "checkers",
-        "description": "checkers",
-        "isExtraImport": true,
-        "detail": "checkers",
-        "documentation": {}
-    },
-    {
         "label": "tic_tac_toe",
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
@@ -364,7 +348,7 @@
         "kind": 2,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "def win(winner):\n     if winner == 'Player 1':\n         P1_WINS = P1_WINS + 1\n     elif winner == 'Player 2':\n         P2_WINS = P2_WINS + 1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        WINNER = winner + \" wins\"\n        pygame.display.set_caption(WINNER)",
+        "peekOfCode": "def win(winner):\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        WINNER = winner + \" wins\"\n        pygame.display.set_caption(WINNER)",
         "detail": "menu",
         "documentation": {}
     },
@@ -409,7 +393,7 @@
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "SCREEN = pygame.display.set_mode((800, 800))\npygame.display.set_caption(\"Menu\")\nBG = pygame.image.load(\"assets/Background.png\")\nP1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS = P1_WINS + 1\n     elif winner == 'Player 2':\n         P2_WINS = P2_WINS + 1",
+        "peekOfCode": "SCREEN = pygame.display.set_mode((800, 800))\npygame.display.set_caption(\"Menu\")\nBG = pygame.image.load(\"assets/Background.png\")\nP1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1",
         "detail": "menu",
         "documentation": {}
     },
@@ -418,7 +402,7 @@
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "BG = pygame.image.load(\"assets/Background.png\")\nP1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS = P1_WINS + 1\n     elif winner == 'Player 2':\n         P2_WINS = P2_WINS + 1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()",
+        "peekOfCode": "BG = pygame.image.load(\"assets/Background.png\")\nP1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()",
         "detail": "menu",
         "documentation": {}
     },
@@ -427,7 +411,7 @@
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "P1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS = P1_WINS + 1\n     elif winner == 'Player 2':\n         P2_WINS = P2_WINS + 1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")",
+        "peekOfCode": "P1_WINS = 0\nP2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")",
         "detail": "menu",
         "documentation": {}
     },
@@ -436,7 +420,7 @@
         "kind": 5,
         "importPath": "menu",
         "description": "menu",
-        "peekOfCode": "P2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS = P1_WINS + 1\n     elif winner == 'Player 2':\n         P2_WINS = P2_WINS + 1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        WINNER = winner + \" wins\"",
+        "peekOfCode": "P2_WINS = 0\ndef win(winner):\n     if winner == 'Player 1':\n         P1_WINS +=1\n     elif winner == 'Player 2':\n         P2_WINS +=1\n     while True:\n        WINNER_MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        WINNER = winner + \" wins\"",
         "detail": "menu",
         "documentation": {}
     },
@@ -481,7 +465,7 @@
         "kind": 6,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "class Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col\n        self.x = int(row * width)\n        self.y = int(col * width)\n        self.colour = (255, 255, 255)\n        self.piece = None\n    def draw(self, WIN):\n        pygame.draw.rect(WIN, self.colour, (self.x, self.y, WIDTH / ROWS, WIDTH / ROWS))",
+        "peekOfCode": "class Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col\n        self.x = int(row * width)\n        self.y = int(col * width)\n        self.color = BG_COLOR  # Initially same as background\n        self.piece = None\n    def draw(self, WIN):\n        pygame.draw.rect(WIN, self.color, (self.x, self.y, WIDTH / ROWS, WIDTH / ROWS))",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -490,7 +474,7 @@
         "kind": 6,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "class Piece:\n    def __init__(self, image):\n        self.image = image\ndef make_move(grid, row, col, player):\n    if grid[row][col].piece is None:\n        if player == 'X':\n            grid[row][col].piece = Piece(X_IMAGE)\n        else:\n            grid[row][col].piece = Piece(O_IMAGE)\n        return True",
+        "peekOfCode": "class Piece:\n    def __init__(self, image):\n        self.image = image\ndef make_move(grid, row, col, player):\n    if grid[row][col].piece is None:\n        if player == \"X\":\n            grid[row][col].piece = Piece(X_IMAGE)\n        else:\n            grid[row][col].piece = Piece(O_IMAGE)\n        return True",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -499,7 +483,7 @@
         "kind": 2,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "def update_display(win, grid, rows, width):\n    for row in grid:\n        for spot in row:\n            spot.draw(win)\n    draw_grid(win, rows, width)\n    pygame.display.update()\ndef make_grid(rows, width):\n    grid = []\n    gap = width // rows\n    count = 0",
+        "peekOfCode": "def update_display(win, grid, rows, width):\n    win.fill(BG_COLOR)  # Clear the screen with background color\n    for row in grid:\n        for spot in row:\n            spot.draw(win)\n    draw_grid(win, rows, width)\n    pygame.display.update()\ndef make_grid(rows, width):\n    grid = []\n    gap = width // rows",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -508,7 +492,7 @@
         "kind": 2,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "def make_grid(rows, width):\n    grid = []\n    gap = width // rows\n    count = 0\n    for i in range(rows):\n        grid.append([])\n        for j in range(rows):\n            node = Node(j, i, gap)\n            grid[i].append(node)\n            count += 1",
+        "peekOfCode": "def make_grid(rows, width):\n    grid = []\n    gap = width // rows\n    for i in range(rows):\n        grid.append([])\n        for j in range(rows):\n            node = Node(j, i, gap)\n            grid[i].append(node)\n    return grid\ndef draw_grid(win, rows, width):",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -517,7 +501,7 @@
         "kind": 2,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "def draw_grid(win, rows, width):\n    WIN.blit(surface, (0, 0))\n    gap = width // ROWS\n    for i in range(rows):\n        pygame.draw.line(win, (128, 128, 128), (0, i * gap), (width, i * gap))\n        for j in range(rows):\n            pygame.draw.line(win, (128, 128, 128), (j * gap, 0), (j * gap, width))\n# def draw_pause():\n#     pygame.draw.rect(surface, (128, 128, 128, 150), [0, 0, WIDTH, WIDTH])\n#     WIN.blit(surface, (0, 0))",
+        "peekOfCode": "def draw_grid(win, rows, width):\n    gap = width // ROWS\n    for i in range(rows):\n        pygame.draw.line(\n            win, LINE_COLOR, (0, i * gap), (width, i * gap), width=4\n        )  # Thicker lines\n        for j in range(rows):\n            pygame.draw.line(win, LINE_COLOR, (j * gap, 0), (j * gap, width), width=4)\n# def draw_pause():\n#     pygame.draw.rect(surface, (128, 128, 128, 150), [0, 0, WIDTH, WIDTH])",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -526,7 +510,7 @@
         "kind": 2,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "def make_move(grid, row, col, player):\n    if grid[row][col].piece is None:\n        if player == 'X':\n            grid[row][col].piece = Piece(X_IMAGE)\n        else:\n            grid[row][col].piece = Piece(O_IMAGE)\n        return True\n    return False\ndef check_winner(grid, player):\n    for i in range(ROWS):",
+        "peekOfCode": "def make_move(grid, row, col, player):\n    if grid[row][col].piece is None:\n        if player == \"X\":\n            grid[row][col].piece = Piece(X_IMAGE)\n        else:\n            grid[row][col].piece = Piece(O_IMAGE)\n        return True\n    return False\ndef check_winner(grid, player):\n    for i in range(ROWS):",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -553,7 +537,7 @@
         "kind": 5,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "WIDTH = 800\nROWS = 3\nX_IMAGE = pygame.image.load('assets/x.png')\nO_IMAGE = pygame.image.load('assets/o.png')\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')\npriorMoves = []",
+        "peekOfCode": "WIDTH = 800\nROWS = 3\nX_IMAGE = pygame.image.load('assets/x.png')\nO_IMAGE = pygame.image.load('assets/o.png')\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -562,7 +546,7 @@
         "kind": 5,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "ROWS = 3\nX_IMAGE = pygame.image.load('assets/x.png')\nO_IMAGE = pygame.image.load('assets/o.png')\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')\npriorMoves = []\nclass Node:",
+        "peekOfCode": "ROWS = 3\nX_IMAGE = pygame.image.load('assets/x.png')\nO_IMAGE = pygame.image.load('assets/o.png')\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -571,7 +555,7 @@
         "kind": 5,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "X_IMAGE = pygame.image.load('assets/x.png')\nO_IMAGE = pygame.image.load('assets/o.png')\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')\npriorMoves = []\nclass Node:\n    def __init__(self, row, col, width):",
+        "peekOfCode": "X_IMAGE = pygame.image.load('assets/x.png')\nO_IMAGE = pygame.image.load('assets/o.png')\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -580,7 +564,25 @@
         "kind": 5,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "O_IMAGE = pygame.image.load('assets/o.png')\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')\npriorMoves = []\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row",
+        "peekOfCode": "O_IMAGE = pygame.image.load('assets/o.png')\n# Colors\nLINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')\npriorMoves = []",
+        "detail": "tic_tac_toe",
+        "documentation": {}
+    },
+    {
+        "label": "LINE_COLOR",
+        "kind": 5,
+        "importPath": "tic_tac_toe",
+        "description": "tic_tac_toe",
+        "peekOfCode": "LINE_COLOR = (128, 128, 128)  # Light gray for grid lines\nBG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')\npriorMoves = []\nclass Node:\n    def __init__(self, row, col, width):",
+        "detail": "tic_tac_toe",
+        "documentation": {}
+    },
+    {
+        "label": "BG_COLOR",
+        "kind": 5,
+        "importPath": "tic_tac_toe",
+        "description": "tic_tac_toe",
+        "peekOfCode": "BG_COLOR = (0, 0, 0)  # Black background\n# pause = False\npygame.init()\nWIN = pygame.display.set_mode((WIDTH, WIDTH))\nsurface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')\npriorMoves = []\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -598,7 +600,7 @@
         "kind": 5,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "surface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')\npriorMoves = []\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col\n        self.x = int(row * width)\n        self.y = int(col * width)\n        self.colour = (255, 255, 255)",
+        "peekOfCode": "surface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\npygame.display.set_caption('Tic Tac Toe')\npriorMoves = []\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col\n        self.x = int(row * width)\n        self.y = int(col * width)\n        self.color = BG_COLOR  # Initially same as background",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
@@ -607,7 +609,7 @@
         "kind": 5,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "priorMoves = []\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col\n        self.x = int(row * width)\n        self.y = int(col * width)\n        self.colour = (255, 255, 255)\n        self.piece = None\n    def draw(self, WIN):",
+        "peekOfCode": "priorMoves = []\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col\n        self.x = int(row * width)\n        self.y = int(col * width)\n        self.color = BG_COLOR  # Initially same as background\n        self.piece = None\n    def draw(self, WIN):",
         "detail": "tic_tac_toe",
         "documentation": {}
     }

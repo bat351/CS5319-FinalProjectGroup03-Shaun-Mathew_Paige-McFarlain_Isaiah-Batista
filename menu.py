@@ -16,9 +16,9 @@ P2_WINS = 0
 
 def win(winner):
      if winner == 'Player 1':
-         P1_WINS = P1_WINS + 1
+         P1_WINS +=1
      elif winner == 'Player 2':
-         P2_WINS = P2_WINS + 1
+         P2_WINS +=1
      while True:
         WINNER_MOUSE_POS = pygame.mouse.get_pos()
         SCREEN.fill("black")
