@@ -16,17 +16,17 @@ P2_WINS = 0
 def win(winner):
      if winner == 'Player 1':
          P1_WINS = P1_WINS + 1
-     else:
+     elif winner == 'Player 2':
          P2_WINS = P2_WINS + 1
      while True:
         WINNER_MOUSE_POS = pygame.mouse.get_pos()
         SCREEN.fill("black")
         WINNER = winner + " wins"
         pygame.display.set_caption(WINNER)
-        WINNER_TEXT = pygame.font.Font("assets/font.ttf", 100).render(WINNER, True, "White")
+        WINNER_TEXT = pygame.font.Font("assets/font.ttf", 50).render(WINNER, True, "White")
         WINNER_RECT = WINNER_TEXT.get_rect(center=(400, 400))
         SCREEN.blit(WINNER_TEXT, WINNER_RECT)
-        WINNER_BACK = Button(pos=(400, 600), input="MAIN MENU", font=pygame.font.Font("assets/font.ttf", 50), base="White", hover="Green")
+        WINNER_BACK = Button(pos=(400, 600), input="MAIN MENU", font=pygame.font.Font("assets/font.ttf", 25), base="White", hover="Green")
 
         WINNER_BACK.changeColor(WINNER_MOUSE_POS)
         WINNER_BACK.update(SCREEN)
@@ -54,11 +54,14 @@ def player_stats():
 
         SCREEN.fill("white")
 
-        PLAYER_STATS_TEXT = pygame.font.Font("assets/font.ttf", 30).render("This is the PLAYER STATISTICS screen", True, "Black")
-        PLAYER_STATS_RECT = PLAYER_STATS_TEXT.get_rect(center=(400, 400))
-        SCREEN.blit(PLAYER_STATS_TEXT, PLAYER_STATS_RECT)
+        PLAYER_STATS_TEXT1 = pygame.font.Font("assets/font.ttf", 25).render("This is the", True, "Black")
+        PLAYER_STATS_RECT1 = PLAYER_STATS_TEXT1.get_rect(center=(400, 400))
+        SCREEN.blit(PLAYER_STATS_TEXT1, PLAYER_STATS_RECT1)
+        PLAYER_STATS_TEXT2 = pygame.font.Font("assets/font.ttf", 25).render("PLAYER STATISTICS SCREEN", True, "Black")
+        PLAYER_STATS_RECT2 = PLAYER_STATS_TEXT2.get_rect(center=(400, 450))
+        SCREEN.blit(PLAYER_STATS_TEXT2, PLAYER_STATS_RECT2)
 
-        PLAYER_STATS_BACK = Button(pos=(400, 600), input="BACK", font=pygame.font.Font("assets/font.ttf", 75), base="Black", hover="Green")
+        PLAYER_STATS_BACK = Button(pos=(400, 600), input="BACK", font=pygame.font.Font("assets/font.ttf", 50), base="Black", hover="Green")
 
         PLAYER_STATS_BACK.changeColor(PLAYER_STATS_MOUSE_POS)
         PLAYER_STATS_BACK.update(SCREEN)
@@ -79,15 +82,15 @@ def main_menu():
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
-        MENU_TEXT = pygame.font.Font("assets/font.ttf", 100).render("MAIN MENU", True, "Grey")
+        MENU_TEXT = pygame.font.Font("assets/font.ttf", 60).render("MAIN MENU", True, "Grey")
         MENU_RECT = MENU_TEXT.get_rect(center=(400, 100))
 
         CHECKERS_BUTTON = Button(pos=(400, 250), 
-                            input="CHECKERS", font=pygame.font.Font("assets/font.ttf", 75), base="White", hover="Green")
+                            input="CHECKERS", font=pygame.font.Font("assets/font.ttf", 40), base="White", hover="Green")
         PLAYER_STATS_BUTTON = Button(pos=(400, 400), 
-                            input="PLAYER STATS", font=pygame.font.Font("assets/font.ttf", 75), base="White", hover="Green")
+                            input="PLAYER STATS", font=pygame.font.Font("assets/font.ttf", 40), base="White", hover="Green")
         QUIT_BUTTON = Button(pos=(400, 550), 
-                            input="QUIT", font=pygame.font.Font("assets/font.ttf", 75), base="White", hover="Green")
+                            input="QUIT", font=pygame.font.Font("assets/font.ttf", 40), base="White", hover="Green")
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 

@@ -1,25 +1,18 @@
 import pygame
-import random
 import sys
 from itertools import combinations
 
 
+# default values, can be overloaded
 WIDTH = 800
 ROWS = 8
 
+# import piece images
 RED= pygame.image.load('assets/red.png')
 BLACK= pygame.image.load('assets/black.png')
 
 REDKING = pygame.image.load('assets/redKing.png')
 BLACKKING = pygame.image.load('assets/blackKing.png')
-
-WHITE = (255,255,255)
-GRAY = (100,100,100)
-ORANGE = (235, 168, 52)
-BLUE = (76, 252, 241)
-
-# pause = False
-
 
 TOTALBLACK = 12
 TOTALRED =12
@@ -28,7 +21,6 @@ pygame.init()
 SCREEN = pygame.display.set_mode((800,800))
 
 # surface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)
-pygame.display.set_caption('Checkers')
 
 class Node:
     def __init__(self, row, col, width):
@@ -36,7 +28,7 @@ class Node:
         self.col = col
         self.x = int(row * width)
         self.y = int(col * width)
-        self.colour = WHITE
+        self.colour = (255,255,255)
         self.piece = None
 
     def draw(self, SCREEN):
@@ -62,7 +54,7 @@ def make_grid(rows, width):
         for j in range(rows):
             node = Node(j,i, gap)
             if abs(i-j) % 2 == 0:
-                node.colour=GRAY
+                node.colour=(100,100,100)
             if (abs(i+j)%2==0) and (i<3):
                 node.piece = Piece('R')
             elif(abs(i +j)%2==0) and i>4:
@@ -76,9 +68,9 @@ def draw_grid(SCREEN, rows, width):
     # SCREEN.blit(surface, (0, 0))
     gap = width // ROWS
     for i in range(rows):
-        pygame.draw.line(SCREEN, GRAY, (0, i * gap), (width, i * gap))
+        pygame.draw.line(SCREEN, (100,100,100), (0, i * gap), (width, i * gap))
         for j in range(rows):
-            pygame.draw.line(SCREEN, GRAY, (j * gap, 0), (j * gap, width))
+            pygame.draw.line(SCREEN, (100,100,100), (j * gap, 0), (j * gap, width))
 
 # def draw_pause():
 #     pygame.draw.rect(surface, (128,128,128,150), [0,0,WIDTH,WIDTH])
@@ -109,13 +101,13 @@ def resetColours(grid, node):
 
     for colouredNodes in positions:
         nodeX, nodeY = colouredNodes
-        grid[nodeX][nodeY].colour = GRAY if abs(nodeX - nodeY) % 2 == 0 else WHITE
+        grid[nodeX][nodeY].colour = (100,100,100) if abs(nodeX - nodeY) % 2 == 0 else (255,255,255)
 
 def HighlightpotentialMoves(piecePosition, grid):
     positions = generatePotentialMoves(piecePosition, grid)
     for position in positions:
         Column,Row = position
-        grid[Column][Row].colour=BLUE
+        grid[Column][Row].colour=(0,200,0)
 
 def opposite(team):
     return "R" if team=="B" else "B"
@@ -149,7 +141,7 @@ Error with locating opssible moves row col error
 """
 def highlight(ClickedNode, Grid, OldHighlight):
     Column,Row = ClickedNode
-    Grid[Column][Row].colour=ORANGE
+    Grid[Column][Row].colour=(200,0,0)
     if OldHighlight:
         resetColours(Grid, OldHighlight)
     HighlightpotentialMoves(ClickedNode, Grid)
@@ -180,55 +172,59 @@ def move(grid, piecePosition, newPosition, TOTALBLACK, TOTALRED):
 
 
 def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
-    grid = make_grid(ROWS, WIDTH)
-    highlightedPiece = None
-    currMove = 'B'
-
     while True:
+        grid = make_grid(ROWS, WIDTH)
+        highlightedPiece = None
+        currMove = 'B'
 
-        if TOTALBLACK == 0:
-            return 'Player 1'
-        if TOTALRED == 0:
-            return 'Player 2'
+        while True:
 
-        for event in pygame.event.get():
-            if event.type== pygame.QUIT:
-                print('EXIT SUCCESSFUL')
-                pygame.quit()
-                sys.exit()
+            if TOTALBLACK == 0:
+                return 'Player 1'
+            if TOTALRED == 0:
+                return 'Player 2'
 
-            # if event.type == pygame.KEYDOWN:
-            #     if event.key == pygame.K_ESCAPE:
-            #         if pause :
-            #             pause = False
-            #         else:
-            #             pause = True
-            #             draw_pause()
+            for event in pygame.event.get():
+                if event.type== pygame.QUIT:
+                    print('EXIT SUCCESSFUL')
+                    pygame.quit()
+                    sys.exit()
 
-            if event.type == pygame.MOUSEBUTTONDOWN: #and not pause
-                clickedNode = getNode(grid, ROWS, WIDTH)
-                ClickedPositionColumn, ClickedPositionRow = clickedNode
-                if grid[ClickedPositionColumn][ClickedPositionRow].colour == BLUE:
-                    if highlightedPiece:
-                        pieceColumn, pieceRow = highlightedPiece
-                    if currMove == grid[pieceColumn][pieceRow].piece.team:
-                        resetColours(grid, highlightedPiece)
-                        prevMove = currMove
-                        currMove=move(grid, highlightedPiece, clickedNode, TOTALBLACK, TOTALRED)
-                        if currMove == prevMove and prevMove == 'B':
-                            TOTALRED = TOTALRED - 1
-                        elif currMove == prevMove and prevMove == 'R':
-                            TOTALBLACK = TOTALBLACK -1
+                # if event.type == pygame.KEYDOWN:
+                #     if event.key == pygame.K_ESCAPE:
+                #         if pause :
+                #             pause = False
+                #         else:
+                #             pause = True
+                #             draw_pause()
 
-                elif highlightedPiece == clickedNode:
-                    pass
-                else:
-                    if grid[ClickedPositionColumn][ClickedPositionRow].piece:
-                        if currMove == grid[ClickedPositionColumn][ClickedPositionRow].piece.team:
-                            highlightedPiece = highlight(clickedNode, grid, highlightedPiece)
+                if event.type == pygame.MOUSEBUTTONDOWN: #and not pause
+                    clickedNode = getNode(grid, ROWS, WIDTH)
+                    ClickedPositionColumn, ClickedPositionRow = clickedNode
+                    if grid[ClickedPositionColumn][ClickedPositionRow].colour == (0,200,0):
+                        if highlightedPiece:
+                            pieceColumn, pieceRow = highlightedPiece
+                        if currMove == grid[pieceColumn][pieceRow].piece.team:
+                            resetColours(grid, highlightedPiece)
+                            prevMove = currMove
+                            currMove=move(grid, highlightedPiece, clickedNode, TOTALBLACK, TOTALRED)
+                            if currMove == prevMove and prevMove == 'B':
+                                TOTALRED = TOTALRED - 1
+                            elif currMove == prevMove and prevMove == 'R':
+                                TOTALBLACK = TOTALBLACK -1
 
-        # if not pause:
-            update_display(SCREEN, grid,ROWS,WIDTH)
+                    elif highlightedPiece == clickedNode:
+                        pass
+                    else:
+                        if grid[ClickedPositionColumn][ClickedPositionRow].piece:
+                            if currMove == grid[ClickedPositionColumn][ClickedPositionRow].piece.team:
+                                highlightedPiece = highlight(clickedNode, grid, highlightedPiece)
+
+            # if not pause:
+                update_display(SCREEN, grid,ROWS,WIDTH)
+        
+        
+    
 
 
 # checkers(WIDTH, ROWS, TOTALRED, TOTALBLACK)
