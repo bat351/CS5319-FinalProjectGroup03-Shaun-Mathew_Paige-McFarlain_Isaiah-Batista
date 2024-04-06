@@ -11,6 +11,7 @@ pygame.display.set_caption("Menu")
 
 BG = pygame.image.load("assets/Background.png")
 
+# MODEL
 CHECKERS_WINS = [0, 0]
 CONNECT_4_WINS = [0, 0]
 TIC_TAC_TOE_WINS = [0, 0]
@@ -35,6 +36,7 @@ def win(winner, game):
             TIC_TAC_TOE_WINS[1] += 1
 
     while True:
+        # CONTROLLER
         WINNER_MOUSE_POS = pygame.mouse.get_pos()
         SCREEN.fill("black")
         WINNER = winner + " wins"
@@ -58,6 +60,8 @@ def win(winner, game):
         pygame.display.update()
 
 
+
+# MODEL
 def play_checkers():
     pygame.display.set_caption("Checkers")
     SCREEN.fill("black")
@@ -76,6 +80,7 @@ def play_tic_tac_toe():
 
 def main_menu():
     while True:
+        # VIEW
         SCREEN.blit(BG, (0, 0))
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
@@ -96,6 +101,7 @@ def main_menu():
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
+        # CONTROLLER
         for button in [CHECKERS_BUTTON, CONNECT_4_BUTTON , TIC_TAC_TOE_BUTTON  ,PLAYER_STATS_BUTTON, QUIT_BUTTON]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(SCREEN)

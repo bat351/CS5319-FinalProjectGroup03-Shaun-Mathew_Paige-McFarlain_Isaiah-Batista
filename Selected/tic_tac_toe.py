@@ -1,13 +1,14 @@
 import pygame
-import random
+
 import sys
 from itertools import combinations
+
 
 WIDTH = 800
 ROWS = 3
 
-X_IMAGE = pygame.image.load('assets/x.png')
-O_IMAGE = pygame.image.load('assets/o.png')
+X_IMAGE = pygame.image.load("assets/x.png")
+O_IMAGE = pygame.image.load("assets/o.png")
 
 # resize images
 X_IMAGE = pygame.transform.scale(X_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))
@@ -17,16 +18,14 @@ O_IMAGE = pygame.transform.scale(O_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))
 LINE_COLOR = (128, 128, 128)  # Light gray for grid lines
 BG_COLOR = (0, 0, 0)  # Black background
 
-# pause = False
-
+# MODEL
 pygame.init()
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
-surface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)
-pygame.display.set_caption('Tic Tac Toe')
+pygame.display.set_caption("Tic Tac Toe")
 
 priorMoves = []
 
-
+# VIEW
 class Node:
     def __init__(self, row, col, width):
         self.row = row
@@ -88,18 +87,40 @@ def make_move(grid, row, col, player):
         return True
     return False
 
-
+# MODEL
 def check_winner(grid, player):
     for i in range(ROWS):
-        if all([grid[i][j].piece is not None and grid[i][j].piece.image == player for j in range(ROWS)]):
+        if all(
+            [
+                grid[i][j].piece is not None and grid[i][j].piece.image == player
+                for j in range(ROWS)
+            ]
+        ):
             return True
-        if all([grid[j][i].piece is not None and grid[j][i].piece.image == player for j in range(ROWS)]):
+        if all(
+            [
+                grid[j][i].piece is not None and grid[j][i].piece.image == player
+                for j in range(ROWS)
+            ]
+        ):
             return True
-    if all([grid[i][i].piece is not None and grid[i][i].piece.image == player for i in range(ROWS)]):
+    if all(
+        [
+            grid[i][i].piece is not None and grid[i][i].piece.image == player
+            for i in range(ROWS)
+        ]
+    ):
         return True
-    if all([grid[i][ROWS - i - 1].piece is not None and grid[i][ROWS - i - 1].piece.image == player for i in range(ROWS)]):
+    if all(
+        [
+            grid[i][ROWS - i - 1].piece is not None
+            and grid[i][ROWS - i - 1].piece.image == player
+            for i in range(ROWS)
+        ]
+    ):
         return True
     return False
+
 
 def check_draw(grid):
 
@@ -107,44 +128,37 @@ def check_draw(grid):
         return True
     return False
 
-def tic_tac_toe(WIDTH,ROWS):
+
+def tic_tac_toe(WIDTH, ROWS):
     grid = make_grid(ROWS, WIDTH)
-    currMove = 'X'
+    currMove = "X"
 
     while True:
 
         if check_winner(grid, X_IMAGE):
-            return 'Player_1'
+            return "Player_1"
         elif check_winner(grid, O_IMAGE):
-            return 'Player_2'
+            return "Player_2"
         elif check_draw(grid):
-            return 'Draw'
+            return "Draw"
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                print('EXIT SUCCESSFUL')
+                print("EXIT SUCCESSFUL")
                 pygame.quit()
                 sys.exit()
 
-            # if event.type == pygame.KEYDOWN:
-            #     if event.key == pygame.K_ESCAPE:
-            #         if pause:
-            #             pause = False
-            #         else:
-            #             pause = True
-            #              draw_pause()
-
+            # CONTROLLER
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()
                 row = y // (WIDTH // ROWS)
                 col = x // (WIDTH // ROWS)
 
-                if  make_move(grid, row, col, currMove):
-                    if currMove == 'X':
-                        currMove = 'O'
+                if make_move(grid, row, col, currMove):
+                    if currMove == "X":
+                        currMove = "O"
                     else:
-                        currMove = 'X'
+                        currMove = "X"
                     priorMoves.append((row, col))
-
 
         update_display(WIN, grid, ROWS, WIDTH)
