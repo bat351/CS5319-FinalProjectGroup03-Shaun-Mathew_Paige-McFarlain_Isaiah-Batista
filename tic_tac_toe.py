@@ -71,9 +71,6 @@ def draw_grid(win, rows, width):
         for j in range(rows):
             pygame.draw.line(win, LINE_COLOR, (j * gap, 0), (j * gap, width), width=4)
 
-# def draw_pause():
-#     pygame.draw.rect(surface, (128, 128, 128, 150), [0, 0, WIDTH, WIDTH])
-#     WIN.blit(surface, (0, 0))
 
 class Piece:
     def __init__(self, image):

@@ -889,7 +889,7 @@
         "kind": 2,
         "importPath": "tic_tac_toe",
         "description": "tic_tac_toe",
-        "peekOfCode": "def draw_grid(win, rows, width):\n    gap = width // ROWS\n    for i in range(rows):\n        pygame.draw.line(\n            win, LINE_COLOR, (0, i * gap), (width, i * gap), width=4\n        )  # Thicker lines\n        for j in range(rows):\n            pygame.draw.line(win, LINE_COLOR, (j * gap, 0), (j * gap, width), width=4)\n# def draw_pause():\n#     pygame.draw.rect(surface, (128, 128, 128, 150), [0, 0, WIDTH, WIDTH])",
+        "peekOfCode": "def draw_grid(win, rows, width):\n    gap = width // ROWS\n    for i in range(rows):\n        pygame.draw.line(\n            win, LINE_COLOR, (0, i * gap), (width, i * gap), width=4\n        )  # Thicker lines\n        for j in range(rows):\n            pygame.draw.line(win, LINE_COLOR, (j * gap, 0), (j * gap, width), width=4)\nclass Piece:\n    def __init__(self, image):",
         "detail": "tic_tac_toe",
         "documentation": {}
     },
