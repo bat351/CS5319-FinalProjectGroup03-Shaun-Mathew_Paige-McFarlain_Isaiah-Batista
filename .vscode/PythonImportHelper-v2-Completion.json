@@ -34,6 +34,24 @@
         "documentation": {}
     },
     {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
         "label": "pygame,",
         "kind": 6,
         "isExtraImport": true,
@@ -357,6 +375,348 @@
         "description": "checkers",
         "peekOfCode": "SCREEN = pygame.display.set_mode((800,800))\n# surface = pygame.Surface((WIDTH, WIDTH), pygame.SRCALPHA)\nclass Node:\n    def __init__(self, row, col, width):\n        self.row = row\n        self.col = col\n        self.x = int(row * width)\n        self.y = int(col * width)\n        self.colour = (255,255,255)\n        self.piece = None",
         "detail": "checkers",
+        "documentation": {}
+    },
+    {
+        "label": "create_board",
+        "kind": 2,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "def create_board():\n\tboard = np.zeros((6,7))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT - 1][col] == 0\ndef get_next_open_row(board, col):\n\tfor i in range(ROW_COUNT):\n\t\tif board[i][col] == 0:",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "drop_piece",
+        "kind": 2,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "def drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT - 1][col] == 0\ndef get_next_open_row(board, col):\n\tfor i in range(ROW_COUNT):\n\t\tif board[i][col] == 0:\n\t\t\treturn i\ndef winning_move(board, piece):\n\t# horizontal",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "is_valid_location",
+        "kind": 2,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "def is_valid_location(board, col):\n\treturn board[ROW_COUNT - 1][col] == 0\ndef get_next_open_row(board, col):\n\tfor i in range(ROW_COUNT):\n\t\tif board[i][col] == 0:\n\t\t\treturn i\ndef winning_move(board, piece):\n\t# horizontal\n\tfor c in range(COLUMN_COUNT-3):\n\t\tfor r in range(ROW_COUNT):",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "get_next_open_row",
+        "kind": 2,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "def get_next_open_row(board, col):\n\tfor i in range(ROW_COUNT):\n\t\tif board[i][col] == 0:\n\t\t\treturn i\ndef winning_move(board, piece):\n\t# horizontal\n\tfor c in range(COLUMN_COUNT-3):\n\t\tfor r in range(ROW_COUNT):\n\t\t\tif board[r][c] == piece and board[r][c+1] == piece and board[r][c+2] == piece and board[r][c+3] == piece:\n\t\t\t\treturn True",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "winning_move",
+        "kind": 2,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "def winning_move(board, piece):\n\t# horizontal\n\tfor c in range(COLUMN_COUNT-3):\n\t\tfor r in range(ROW_COUNT):\n\t\t\tif board[r][c] == piece and board[r][c+1] == piece and board[r][c+2] == piece and board[r][c+3] == piece:\n\t\t\t\treturn True\n\t# vertical\n\tfor c in range(COLUMN_COUNT):\n\t\tfor r in range(ROW_COUNT-3):\n\t\t\tif board[r][c] == piece and board[r+1][c] == piece and board[r+2][c] == piece and board[r+3][c] == piece:",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "draw_board",
+        "kind": 2,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "def draw_board(board):\n\tfor c in range(COLUMN_COUNT):\n\t\tfor r in range(ROW_COUNT):\n\t\t\tpygame.draw.rect(screen, BLUE, (c*SQUARESIZE, r*SQUARESIZE+SQUARESIZE, SQUARESIZE, SQUARESIZE))\n\t\t\tpygame.draw.circle(screen, BLACK, (int(c*SQUARESIZE+SQUARESIZE/2), int(r*SQUARESIZE+SQUARESIZE+SQUARESIZE/2)), RADIUS)\n\tfor c in range(COLUMN_COUNT):\n\t\tfor r in range(ROW_COUNT):\n\t\t\tif board[r][c] == 1:\n\t\t\t\tpygame.draw.circle(screen, RED, (int(c*SQUARESIZE+SQUARESIZE/2), height-int(r*SQUARESIZE+SQUARESIZE/2)), RADIUS)\n\t\t\telif board[r][c] == 2:",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "print_board",
+        "kind": 2,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "def print_board(board):\n\tprint(np.flip(board, 0))\n\tprint(\"\\n\")\nboard = create_board()\nprint(board)\ngame_over = False\nturn = 0\npygame.init()\nSQUARE_SIZE = 100\nRADIUS = int(SQUARE_SIZE/2 - 5)",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "BLUE",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "BLUE = (0,0,255)\nBLACK = (0,0,0)\nRED = (255,0,0)\nYELLOW = (255,255,0)\nSQUARESIZE = 100\nROW_COUNT = 6\nCOLUMN_COUNT = 7\nEVEN = 0\nODD = 1\ndef create_board():",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "BLACK",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "BLACK = (0,0,0)\nRED = (255,0,0)\nYELLOW = (255,255,0)\nSQUARESIZE = 100\nROW_COUNT = 6\nCOLUMN_COUNT = 7\nEVEN = 0\nODD = 1\ndef create_board():\n\tboard = np.zeros((6,7))",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "RED",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "RED = (255,0,0)\nYELLOW = (255,255,0)\nSQUARESIZE = 100\nROW_COUNT = 6\nCOLUMN_COUNT = 7\nEVEN = 0\nODD = 1\ndef create_board():\n\tboard = np.zeros((6,7))\n\treturn board",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "YELLOW",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "YELLOW = (255,255,0)\nSQUARESIZE = 100\nROW_COUNT = 6\nCOLUMN_COUNT = 7\nEVEN = 0\nODD = 1\ndef create_board():\n\tboard = np.zeros((6,7))\n\treturn board\ndef drop_piece(board, row, col, piece):",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "SQUARESIZE",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "SQUARESIZE = 100\nROW_COUNT = 6\nCOLUMN_COUNT = 7\nEVEN = 0\nODD = 1\ndef create_board():\n\tboard = np.zeros((6,7))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "ROW_COUNT",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "ROW_COUNT = 6\nCOLUMN_COUNT = 7\nEVEN = 0\nODD = 1\ndef create_board():\n\tboard = np.zeros((6,7))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "COLUMN_COUNT",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "COLUMN_COUNT = 7\nEVEN = 0\nODD = 1\ndef create_board():\n\tboard = np.zeros((6,7))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT - 1][col] == 0",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "EVEN",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "EVEN = 0\nODD = 1\ndef create_board():\n\tboard = np.zeros((6,7))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT - 1][col] == 0\ndef get_next_open_row(board, col):",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "ODD",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "ODD = 1\ndef create_board():\n\tboard = np.zeros((6,7))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT - 1][col] == 0\ndef get_next_open_row(board, col):\n\tfor i in range(ROW_COUNT):",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "\tboard",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "\tboard = np.zeros((6,7))\n\treturn board\ndef drop_piece(board, row, col, piece):\n\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT - 1][col] == 0\ndef get_next_open_row(board, col):\n\tfor i in range(ROW_COUNT):\n\t\tif board[i][col] == 0:\n\t\t\treturn i",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "\tboard[row][col]",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "\tboard[row][col] = piece\ndef is_valid_location(board, col):\n\treturn board[ROW_COUNT - 1][col] == 0\ndef get_next_open_row(board, col):\n\tfor i in range(ROW_COUNT):\n\t\tif board[i][col] == 0:\n\t\t\treturn i\ndef winning_move(board, piece):\n\t# horizontal\n\tfor c in range(COLUMN_COUNT-3):",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "board",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "board = create_board()\nprint(board)\ngame_over = False\nturn = 0\npygame.init()\nSQUARE_SIZE = 100\nRADIUS = int(SQUARE_SIZE/2 - 5)\nwidth = COLUMN_COUNT*SQUARESIZE\nheight = (ROW_COUNT+1)*SQUARESIZE\nsize = (width, height)",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "game_over",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "game_over = False\nturn = 0\npygame.init()\nSQUARE_SIZE = 100\nRADIUS = int(SQUARE_SIZE/2 - 5)\nwidth = COLUMN_COUNT*SQUARESIZE\nheight = (ROW_COUNT+1)*SQUARESIZE\nsize = (width, height)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "turn",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "turn = 0\npygame.init()\nSQUARE_SIZE = 100\nRADIUS = int(SQUARE_SIZE/2 - 5)\nwidth = COLUMN_COUNT*SQUARESIZE\nheight = (ROW_COUNT+1)*SQUARESIZE\nsize = (width, height)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "SQUARE_SIZE",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "SQUARE_SIZE = 100\nRADIUS = int(SQUARE_SIZE/2 - 5)\nwidth = COLUMN_COUNT*SQUARESIZE\nheight = (ROW_COUNT+1)*SQUARESIZE\nsize = (width, height)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()\nmyfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "RADIUS",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "RADIUS = int(SQUARE_SIZE/2 - 5)\nwidth = COLUMN_COUNT*SQUARESIZE\nheight = (ROW_COUNT+1)*SQUARESIZE\nsize = (width, height)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()\nmyfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:\n\tfor event in pygame.event.get():",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "width",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "width = COLUMN_COUNT*SQUARESIZE\nheight = (ROW_COUNT+1)*SQUARESIZE\nsize = (width, height)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()\nmyfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:\n\tfor event in pygame.event.get():\n\t\tif event.type == pygame.QUIT:",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "height",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "height = (ROW_COUNT+1)*SQUARESIZE\nsize = (width, height)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()\nmyfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:\n\tfor event in pygame.event.get():\n\t\tif event.type == pygame.QUIT:\n\t\t\tsys.exit()",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "size",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "size = (width, height)\nscreen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()\nmyfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:\n\tfor event in pygame.event.get():\n\t\tif event.type == pygame.QUIT:\n\t\t\tsys.exit()\n\t\tif event.type == pygame.MOUSEMOTION:",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "screen",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "screen = pygame.display.set_mode(size)\ndraw_board(board)\npygame.display.update()\nmyfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:\n\tfor event in pygame.event.get():\n\t\tif event.type == pygame.QUIT:\n\t\t\tsys.exit()\n\t\tif event.type == pygame.MOUSEMOTION:\n\t\t\tpygame.draw.rect(screen, BLACK, (0,0,width,SQUARESIZE))",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "myfont",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "myfont = pygame.font.SysFont(\"monospace\", 75)\nwhile not game_over:\n\tfor event in pygame.event.get():\n\t\tif event.type == pygame.QUIT:\n\t\t\tsys.exit()\n\t\tif event.type == pygame.MOUSEMOTION:\n\t\t\tpygame.draw.rect(screen, BLACK, (0,0,width,SQUARESIZE))\n\t\t\tposx = event.pos[0]\n\t\t\tif turn == 0:\n\t\t\t\tpygame.draw.circle(screen, RED, (posx, int(SQUARESIZE/2)), RADIUS)",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tposx",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "\t\t\tposx = event.pos[0]\n\t\t\tif turn == 0:\n\t\t\t\tpygame.draw.circle(screen, RED, (posx, int(SQUARESIZE/2)), RADIUS)\n\t\t\telse:\n\t\t\t\tpygame.draw.circle(screen, YELLOW, (posx, int(SQUARESIZE/2)), RADIUS)\n\t\tpygame.display.update()\n\t\tif event.type == pygame.MOUSEBUTTONDOWN:\n\t\t\tpygame.draw.rect(screen, BLACK, (0,0, width, SQUARESIZE))\n\t\t\t# Player 1 input\n\t\t\tif turn == 0:",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tposx",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "\t\t\t\tposx = event.pos[0]\n\t\t\t\tcol = int(math.floor(posx/SQUARESIZE))\n\t\t\t\tif is_valid_location(board, col):\n\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 1)\n\t\t\t\t\tif winning_move(board, 1):\n\t\t\t\t\t\tprint(\"Player1 Wins\")\n\t\t\t\t\t\tgame_over = True\n\t\t\t# Player 2 input\n\t\t\telse:",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tcol",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "\t\t\t\tcol = int(math.floor(posx/SQUARESIZE))\n\t\t\t\tif is_valid_location(board, col):\n\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 1)\n\t\t\t\t\tif winning_move(board, 1):\n\t\t\t\t\t\tprint(\"Player1 Wins\")\n\t\t\t\t\t\tgame_over = True\n\t\t\t# Player 2 input\n\t\t\telse:\n\t\t\t\tposx = event.pos[0]",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\trow",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 1)\n\t\t\t\t\tif winning_move(board, 1):\n\t\t\t\t\t\tprint(\"Player1 Wins\")\n\t\t\t\t\t\tgame_over = True\n\t\t\t# Player 2 input\n\t\t\telse:\n\t\t\t\tposx = event.pos[0]\n\t\t\t\tcol = int(math.floor(posx/SQUARESIZE))\n\t\t\t\tif is_valid_location(board, col):",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\tgame_over",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "\t\t\t\t\t\tgame_over = True\n\t\t\t# Player 2 input\n\t\t\telse:\n\t\t\t\tposx = event.pos[0]\n\t\t\t\tcol = int(math.floor(posx/SQUARESIZE))\n\t\t\t\tif is_valid_location(board, col):\n\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 2)\n\t\t\t\t\tif winning_move(board, 2):\n\t\t\t\t\t\tprint(\"Player2 Wins\")",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tposx",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "\t\t\t\tposx = event.pos[0]\n\t\t\t\tcol = int(math.floor(posx/SQUARESIZE))\n\t\t\t\tif is_valid_location(board, col):\n\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 2)\n\t\t\t\t\tif winning_move(board, 2):\n\t\t\t\t\t\tprint(\"Player2 Wins\")\n\t\t\t\t\t\tgame_over = True\n\t\t\tprint_board(board)\n\t\t\tdraw_board(board)",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\tcol",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "\t\t\t\tcol = int(math.floor(posx/SQUARESIZE))\n\t\t\t\tif is_valid_location(board, col):\n\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 2)\n\t\t\t\t\tif winning_move(board, 2):\n\t\t\t\t\t\tprint(\"Player2 Wins\")\n\t\t\t\t\t\tgame_over = True\n\t\t\tprint_board(board)\n\t\t\tdraw_board(board)\n\t\t\tturn += 1",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\trow",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "\t\t\t\t\trow = get_next_open_row(board, col)\n\t\t\t\t\tdrop_piece(board, row, col, 2)\n\t\t\t\t\tif winning_move(board, 2):\n\t\t\t\t\t\tprint(\"Player2 Wins\")\n\t\t\t\t\t\tgame_over = True\n\t\t\tprint_board(board)\n\t\t\tdraw_board(board)\n\t\t\tturn += 1\n\t\t\tturn = turn % 2\n\t\t\tif game_over:",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\t\tgame_over",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "\t\t\t\t\t\tgame_over = True\n\t\t\tprint_board(board)\n\t\t\tdraw_board(board)\n\t\t\tturn += 1\n\t\t\tturn = turn % 2\n\t\t\tif game_over:\n\t\t\t\tpygame.time.wait(3000)",
+        "detail": "connect_four",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tturn",
+        "kind": 5,
+        "importPath": "connect_four",
+        "description": "connect_four",
+        "peekOfCode": "\t\t\tturn = turn % 2\n\t\t\tif game_over:\n\t\t\t\tpygame.time.wait(3000)",
+        "detail": "connect_four",
         "documentation": {}
     },
     {
