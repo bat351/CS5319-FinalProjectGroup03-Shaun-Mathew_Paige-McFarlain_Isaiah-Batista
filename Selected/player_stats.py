@@ -1,7 +1,7 @@
 import pygame, sys
 from button import Button
 
-
+# MODEL
 pygame.init()
 
 SCREEN = pygame.display.set_mode((800, 800))
@@ -12,6 +12,7 @@ def player_stats(CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS):
     while True:
         MOUSE_POS = pygame.mouse.get_pos()
 
+# VIEW
         SCREEN.fill("black")
 
         TITLE = pygame.font.Font("assets/font.ttf", 30).render(
@@ -114,6 +115,7 @@ def player_stats(CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS):
         BACK.changeColor(MOUSE_POS)
         BACK.update(SCREEN)
 
+# CONTROLLER
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()

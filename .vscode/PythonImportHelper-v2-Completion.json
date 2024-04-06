@@ -687,7 +687,7 @@
         "kind": 2,
         "importPath": "Selected.player_stats",
         "description": "Selected.player_stats",
-        "peekOfCode": "def player_stats(CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS):\n    while True:\n        MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        TITLE = pygame.font.Font(\"assets/font.ttf\", 30).render(\n            \"PLAYER STATISTICS\", True, \"White\"\n        )\n        TRECT = TITLE.get_rect(center=(400, 75))\n        SCREEN.blit(TITLE, TRECT)\n        P1_LABEL = pygame.font.Font(\"assets/font.ttf\", 25).render(",
+        "peekOfCode": "def player_stats(CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS):\n    while True:\n        MOUSE_POS = pygame.mouse.get_pos()\n# VIEW\n        SCREEN.fill(\"black\")\n        TITLE = pygame.font.Font(\"assets/font.ttf\", 30).render(\n            \"PLAYER STATISTICS\", True, \"White\"\n        )\n        TRECT = TITLE.get_rect(center=(400, 75))\n        SCREEN.blit(TITLE, TRECT)",
         "detail": "Selected.player_stats",
         "documentation": {}
     },
@@ -696,7 +696,7 @@
         "kind": 5,
         "importPath": "Selected.player_stats",
         "description": "Selected.player_stats",
-        "peekOfCode": "SCREEN = pygame.display.set_mode((800, 800))\npygame.display.set_caption(\"Player Statistics\")\ndef player_stats(CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS):\n    while True:\n        MOUSE_POS = pygame.mouse.get_pos()\n        SCREEN.fill(\"black\")\n        TITLE = pygame.font.Font(\"assets/font.ttf\", 30).render(\n            \"PLAYER STATISTICS\", True, \"White\"\n        )\n        TRECT = TITLE.get_rect(center=(400, 75))",
+        "peekOfCode": "SCREEN = pygame.display.set_mode((800, 800))\npygame.display.set_caption(\"Player Statistics\")\ndef player_stats(CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS):\n    while True:\n        MOUSE_POS = pygame.mouse.get_pos()\n# VIEW\n        SCREEN.fill(\"black\")\n        TITLE = pygame.font.Font(\"assets/font.ttf\", 30).render(\n            \"PLAYER STATISTICS\", True, \"White\"\n        )",
         "detail": "Selected.player_stats",
         "documentation": {}
     },
