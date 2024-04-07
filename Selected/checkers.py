@@ -1,6 +1,7 @@
 import pygame
 import sys
 from itertools import combinations
+from data import change_player
 
 
 # default values, can be overloaded
@@ -238,6 +239,8 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
                                 TOTALRED = TOTALRED - 1
                             elif currMove == prevMove and prevMove == "R":
                                 TOTALBLACK = TOTALBLACK - 1
+                            else:
+                                change_player()
 
                     elif highlightedPiece == clickedNode:
                         pass
