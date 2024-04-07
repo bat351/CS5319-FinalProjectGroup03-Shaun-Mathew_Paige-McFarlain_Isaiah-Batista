@@ -5,7 +5,7 @@ import numpy as np
 import math
 import pygame
 import sys
-
+from data import get_player, change_player, reset_player
 # MODEL
 BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)
@@ -146,7 +146,6 @@ def connect_4():
     board = create_board()
     print(board)
     game_over = False
-    turn = 0
 
     pygame.init()
 
@@ -154,8 +153,14 @@ def connect_4():
     pygame.display.update()
     myfont = pygame.font.SysFont("monospace", 75)
 
+    # reset player if new game
+    reset_player()
+
     while not game_over:
+        # get player
+        player = get_player()
         for event in pygame.event.get():
+
             if event.type == pygame.QUIT:
                 sys.exit()
 
@@ -163,9 +168,9 @@ def connect_4():
             if event.type == pygame.MOUSEMOTION:
                 pygame.draw.rect(SCREEN, BLACK, (0, 0, SIZE, SQUARESIZE))
                 posx = event.pos[0]
-                if turn == 0:
+                if player == "Player 1":
                     pygame.draw.circle(SCREEN, RED, (posx, int(SQUARESIZE / 2)), RADIUS)
-                else:
+                elif player == "Player 2":
                     pygame.draw.circle(
                         SCREEN, YELLOW, (posx, int(SQUARESIZE / 2)), RADIUS
                     )
@@ -175,27 +180,27 @@ def connect_4():
                 pygame.draw.rect(SCREEN, BLACK, (0, 0, SIZE, SQUARESIZE))
 
                 # Player 1 input
-                if turn == 0:
+                if player == "Player 1":
                     posx = event.pos[0]
                     col = int(math.floor(posx / SQUARESIZE))
                     if is_valid_location(board, col):
                         row = get_next_open_row(board, col)
                         drop_piece(board, row, col, 1)
                         if winning_move(board, 1):
-                            return "Player_1"
+                            return "Player 1"
                 # Player 2 input
-                else:
+                elif (player == "Player 2"):
                     posx = event.pos[0]
                     col = int(math.floor(posx / SQUARESIZE))
                     if is_valid_location(board, col):
                         row = get_next_open_row(board, col)
                         drop_piece(board, row, col, 2)
                         if winning_move(board, 2):
-                            return "Player_2"
+                            return "Player 2"
                 print_board(board)
                 draw_board(board)
-                turn += 1
-                turn = turn % 2
+                # change player
+                change_player()
 
                 if game_over:
                     pygame.time.wait(3000)

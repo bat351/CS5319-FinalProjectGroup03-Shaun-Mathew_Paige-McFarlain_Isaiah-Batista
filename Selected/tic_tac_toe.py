@@ -3,6 +3,8 @@ import pygame
 import sys
 from itertools import combinations
 
+from data import get_player, change_player, reset_player
+
 
 WIDTH = 800
 ROWS = 3
@@ -24,6 +26,7 @@ WIN = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("Tic Tac Toe")
 
 priorMoves = []
+
 
 # VIEW
 class Node:
@@ -78,14 +81,15 @@ class Piece:
 
 def make_move(grid, row, col, player):
     if grid[row][col].piece is None:
-        if player == "X":
+        if player == "Player 1":
             grid[row][col].piece = Piece(X_IMAGE)
 
-        else:
+        elif player == "Player 2":
             grid[row][col].piece = Piece(O_IMAGE)
 
         return True
     return False
+
 
 # MODEL
 def check_winner(grid, player):
@@ -131,14 +135,17 @@ def check_draw(grid):
 
 def tic_tac_toe(WIDTH, ROWS):
     grid = make_grid(ROWS, WIDTH)
-    currMove = "X"
+
+    # reset player if new game
+    reset_player()
 
     while True:
-
+        # get current player
+        currPlayer = get_player()
         if check_winner(grid, X_IMAGE):
-            return "Player_1"
+            return "Player 1"
         elif check_winner(grid, O_IMAGE):
-            return "Player_2"
+            return "Player 2"
         elif check_draw(grid):
             return "Draw"
 
@@ -154,11 +161,9 @@ def tic_tac_toe(WIDTH, ROWS):
                 row = y // (WIDTH // ROWS)
                 col = x // (WIDTH // ROWS)
 
-                if make_move(grid, row, col, currMove):
-                    if currMove == "X":
-                        currMove = "O"
-                    else:
-                        currMove = "X"
+                if make_move(grid, row, col, currPlayer):
+                    # if move is valid, change player
+                    change_player()
                     priorMoves.append((row, col))
 
         update_display(WIN, grid, ROWS, WIDTH)

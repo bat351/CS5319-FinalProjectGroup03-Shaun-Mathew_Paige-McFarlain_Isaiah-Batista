@@ -1,6 +1,6 @@
 import pygame, sys
 
-
+# ModelCe
 SCREEN = pygame.display.set_mode((800, 800))
 pygame.display.set_caption("Menu")
 
@@ -22,3 +22,7 @@ def change_player():
 
 def get_player():
   return CURRENT_PLAYER;
+
+def reset_player():
+  global CURRENT_PLAYER
+  CURRENT_PLAYER = 'Player 1'
