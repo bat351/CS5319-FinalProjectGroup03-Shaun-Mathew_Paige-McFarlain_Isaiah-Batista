@@ -3,7 +3,7 @@ import pygame
 import sys
 from itertools import combinations
 
-from arcade_model import get_player, change_player, reset_player
+from data_layer import get_player, change_player, reset_player
 
 
 WIDTH = 800
@@ -20,7 +20,7 @@ O_IMAGE = pygame.transform.scale(O_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))
 LINE_COLOR = (128, 128, 128)  # Light gray for grid lines
 BG_COLOR = (0, 0, 0)  # Black background
 
-# MODEL
+# DATA LAYER
 pygame.init()
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("Tic Tac Toe")
@@ -28,7 +28,7 @@ pygame.display.set_caption("Tic Tac Toe")
 priorMoves = []
 
 
-# VIEW
+# USER INTERFACE LAYER
 class Node:
     def __init__(self, row, col, width):
         self.row = row
@@ -91,7 +91,7 @@ def make_move(grid, row, col, player):
     return False
 
 
-# MODEL
+# DATA LAYER
 def check_winner(grid, player):
     for i in range(ROWS):
         if all(
@@ -155,7 +155,7 @@ def tic_tac_toe(WIDTH, ROWS):
                 pygame.quit()
                 sys.exit()
 
-            # CONTROLLER
+            # BUSINESS LOGIC LAYER
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()
                 row = y // (WIDTH // ROWS)

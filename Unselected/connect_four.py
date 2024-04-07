@@ -5,8 +5,8 @@ import numpy as np
 import math
 import pygame
 import sys
-from arcade_model import get_player, change_player, reset_player
-# MODEL
+from data_layer import get_player, change_player, reset_player
+# DATA LAYER
 BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
@@ -25,7 +25,7 @@ SQUARESIZE = SIZE / COLUMN_COUNT
 RADIUS = int(SQUARESIZE / 2 - 5)
 
 
-# VIEW
+# USER INTERFACE LAYER
 SCREEN = pygame.display.set_mode((800, 800))
 
 
@@ -164,7 +164,7 @@ def connect_4():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-            # CONTROLLER
+            # BUSINESS LOGIC LAYER
             if event.type == pygame.MOUSEMOTION:
                 pygame.draw.rect(SCREEN, BLACK, (0, 0, SIZE, SQUARESIZE))
                 posx = event.pos[0]

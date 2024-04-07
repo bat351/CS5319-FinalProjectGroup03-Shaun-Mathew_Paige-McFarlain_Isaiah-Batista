@@ -1,6 +1,6 @@
 import pygame, sys
 
-# ModelCe
+# Data Layer
 SCREEN = pygame.display.set_mode((800, 800))
 pygame.display.set_caption("Menu")
 

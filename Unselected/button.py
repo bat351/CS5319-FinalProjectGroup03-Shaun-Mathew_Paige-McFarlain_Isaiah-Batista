@@ -1,6 +1,6 @@
 # reference: https://github.com/baraltech/Menu-System-PyGame
 
-# CONTROLLER
+# BUSINESS LOGIC LAYER
 class Button():
 	def __init__(self, pos, input, font, base, hover):
 		self.x = pos[0]

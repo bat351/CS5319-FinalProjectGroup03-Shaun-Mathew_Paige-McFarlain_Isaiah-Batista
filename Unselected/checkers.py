@@ -2,10 +2,10 @@
 import pygame
 import sys
 from itertools import combinations
-from arcade_model import change_player
+from data_layer import change_player
 
 
-# MODEL
+# DATA LAYER
 WIDTH = 800
 ROWS = 8
 
@@ -18,11 +18,11 @@ BLACKKING = pygame.image.load("assets/blackKing.png")
 TOTALBLACK = 12
 TOTALRED = 12
 
-# CONTROLLER
+# BUSINESS LOGIC LAYER
 pygame.init()
 SCREEN = pygame.display.set_mode((800, 800))
 
-# VIEW
+# USER INTERFACE LAYER
 class Node:
     def __init__(self, row, col, width):
         self.row = row
@@ -111,7 +111,7 @@ def HighlightpotentialMoves(piecePosition, grid):
         Column, Row = position
         grid[Column][Row].colour = (0, 200, 0)
 
-# CONTROLLER
+# BUSINESS LOGIC LAYER
 def opposite(team):
     return "R" if team == "B" else "B"
 
@@ -160,7 +160,7 @@ def highlight(ClickedNode, Grid, OldHighlight):
     return (Column, Row)
 
 
-# CONTROLLER
+# BUSINESS LOGIC LAYER
 def move(grid, piecePosition, newPosition, TOTALBLACK, TOTALRED):
     resetColours(grid, piecePosition)
     newColumn, newRow = newPosition

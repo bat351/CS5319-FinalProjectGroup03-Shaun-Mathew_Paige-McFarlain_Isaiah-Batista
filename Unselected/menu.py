@@ -1,12 +1,12 @@
 # reference: https://github.com/baraltech/Menu-System-PyGame
 
 import pygame, sys
-from arcade_model import *
-from Selected.button import Button
-from Selected.checkers import checkers
-from Selected.tic_tac_toe import tic_tac_toe
-from Selected.player_stats import player_stats
-from Selected.connect_four import connect_4
+from data_layer import *
+from button import Button
+from checkers import checkers
+from tic_tac_toe import tic_tac_toe
+from player_stats import player_stats
+from connect_four import connect_4
 
 pygame.init()
 
@@ -15,7 +15,7 @@ pygame.display.set_caption("Menu")
 
 def display_win(winner, game):
 
-    # Controller
+    # BUSINESS LOGIC LAYER
     if game == "Checkers":
         if winner == "Player 1":
             CHECKERS_WINS[0] += 1
@@ -33,7 +33,7 @@ def display_win(winner, game):
             TIC_TAC_TOE_WINS[1] += 1
 
     while True:
-        # VIEW
+        # USER INTERFACE LAYER
         WINNER_MOUSE_POS = pygame.mouse.get_pos()
         SCREEN.fill("black")
         WINNER = winner + " wins"
@@ -54,7 +54,7 @@ def display_win(winner, game):
         WINNER_BACK.changeColor(WINNER_MOUSE_POS)
         WINNER_BACK.update(SCREEN)
 
-        # CONTROLLER
+        # BUSINESS LOGIC LAYER
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -87,7 +87,7 @@ def play_tic_tac_toe():
 
 def main_menu():
     while True:
-        # VIEW
+        # USER INTERFACE LAYER
         SCREEN.blit(BG, (0, 0))
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
@@ -135,7 +135,7 @@ def main_menu():
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
-        # CONTROLLER
+        # BUSINESS LOGIC LAYER
         for button in [
             CHECKERS_BUTTON,
             CONNECT_4_BUTTON,
