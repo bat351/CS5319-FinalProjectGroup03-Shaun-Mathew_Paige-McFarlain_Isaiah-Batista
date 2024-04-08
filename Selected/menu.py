@@ -13,19 +13,19 @@ pygame.init()
 pygame.display.set_caption("Menu")
 
 # MODEL
-def process_win(winner, game):
+def process_win(winner, gameName):
 
-    if game == "Checkers":
+    if gameName == "Checkers":
         if winner == "Player 1":
             CHECKERS_WINS[0] += 1
         elif winner == "Player 2":
             CHECKERS_WINS[1] += 1
-    elif game == "Connect 4":
+    elif gameName == "Connect 4":
         if winner == "Player 1":
             CONNECT_4_WINS[0] += 1
         elif winner == "Player 2":
             CONNECT_4_WINS[1] += 1
-    elif game == "Tic-Tac-Toe":
+    elif gameName == "Tic-Tac-Toe":
         if winner == "Player 1":
             TIC_TAC_TOE_WINS[0] += 1
         elif winner == "Player 2":
