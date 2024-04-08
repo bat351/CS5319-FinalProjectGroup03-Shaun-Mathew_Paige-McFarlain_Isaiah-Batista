@@ -10,9 +10,9 @@ pygame.display.set_caption("Player Statistics")
 
 class player_stats():
     def __init__(self):
-        player_stats.player_stats()
+        player_stats.display_player_stats()
 
-    def player_stats():
+    def display_player_stats():
 
         while True:
             MOUSE_POS = pygame.mouse.get_pos()
