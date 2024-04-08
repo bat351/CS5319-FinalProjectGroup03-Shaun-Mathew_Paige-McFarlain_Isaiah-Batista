@@ -3,10 +3,9 @@ import pygame
 import sys
 from itertools import combinations
 
-from arcade_model import get_player, change_player, reset_player
+from arcade_model import *
 
 
-WIDTH = 800
 ROWS = 3
 
 X_IMAGE = pygame.image.load("assets/x.png")
@@ -20,12 +19,8 @@ O_IMAGE = pygame.transform.scale(O_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))
 LINE_COLOR = (128, 128, 128)  # Light gray for grid lines
 BG_COLOR = (0, 0, 0)  # Black background
 
-# MODEL
-pygame.init()
-WIN = pygame.display.set_mode((WIDTH, WIDTH))
-pygame.display.set_caption("Tic Tac Toe")
 
-priorMoves = []
+
 
 
 # VIEW
@@ -164,6 +159,6 @@ def tic_tac_toe(WIDTH, ROWS):
                 if make_move(grid, row, col, currPlayer):
                     # if move is valid, change player
                     change_player()
-                    priorMoves.append((row, col))
+                    
 
-        update_display(WIN, grid, ROWS, WIDTH)
+        update_display(SCREEN, grid, ROWS, WIDTH)

@@ -15,7 +15,7 @@ pygame.display.set_caption("Menu")
 
 def display_win(winner, game):
 
-    # Controller
+    # MODEL
     if game == "Checkers":
         if winner == "Player 1":
             CHECKERS_WINS[0] += 1
@@ -145,7 +145,7 @@ def main_menu():
         ]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(SCREEN)
-            
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -158,7 +158,7 @@ def main_menu():
                 if TIC_TAC_TOE_BUTTON.checkForInput(MENU_MOUSE_POS):
                     play_tic_tac_toe()
                 if PLAYER_STATS_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    player_stats(CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS)
+                    player_stats()
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()

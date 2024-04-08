@@ -5,7 +5,7 @@ import numpy as np
 import math
 import pygame
 import sys
-from arcade_model import get_player, change_player, reset_player
+from arcade_model import get_player, change_player, reset_player, SCREEN
 # MODEL
 BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)
@@ -26,9 +26,6 @@ RADIUS = int(SQUARESIZE / 2 - 5)
 
 
 # VIEW
-SCREEN = pygame.display.set_mode((800, 800))
-
-
 def create_board():
     board = np.zeros((6, 7))
     return board

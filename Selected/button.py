@@ -2,6 +2,7 @@
 
 # CONTROLLER
 class Button():
+
 	def __init__(self, pos, input, font, base, hover):
 		self.x = pos[0]
 		self.y = pos[1]
