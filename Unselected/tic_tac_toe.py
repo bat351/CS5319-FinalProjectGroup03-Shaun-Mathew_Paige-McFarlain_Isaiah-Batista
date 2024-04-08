@@ -8,7 +8,6 @@ from tic_tac_toe_logic import *
 
 
 pygame.init()
-WIN = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("Tic Tac Toe")
 
 

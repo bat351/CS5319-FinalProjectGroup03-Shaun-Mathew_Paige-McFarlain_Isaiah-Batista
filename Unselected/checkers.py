@@ -19,7 +19,6 @@ def update_display(SCREEN, grid, rows, width):
 
 
 def draw_grid(SCREEN, rows, width):
-    # SCREEN.blit(surface, (0, 0))
     gap = width // ROWS
     for i in range(rows):
         pygame.draw.line(SCREEN, (100, 100, 100), (0, i * gap), (width, i * gap))
@@ -27,23 +26,21 @@ def draw_grid(SCREEN, rows, width):
             pygame.draw.line(SCREEN, (100, 100, 100), (j * gap, 0), (j * gap, width))
 
 
-def HighlightpotentialMoves(piecePosition, grid):
-    positions = generatePotentialMoves(piecePosition, grid)
+def highlight_moves(currPos, grid):
+    positions = generatePotentialMoves(currPos, grid)
     for position in positions:
         Column, Row = position
         grid[Column][Row].colour = (0, 200, 0)
 
 
-def highlight(ClickedNode, Grid, OldHighlight):
-    Column, Row = ClickedNode
-    Grid[Column][Row].colour = (200, 0, 0)
-    if OldHighlight:
-        resetColours(Grid, OldHighlight)
-    HighlightpotentialMoves(ClickedNode, Grid)
+def highlight(currNode, grid, prevHighlight):
+    Column, Row = currNode
+    grid[Column][Row].colour = (200, 0, 0)
+    if prevHighlight:
+        resetColors(grid, prevHighlight)
+    highlight_moves(currNode, grid)
     return (Column, Row)
 
-
-# BUSINESS LOGIC LAYER
 
 def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
     while True:
@@ -66,8 +63,8 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
 
               
                 if event.type == pygame.MOUSEBUTTONDOWN:  # and not pause
-                    clickedNode = getNode(grid, ROWS, WIDTH)
-                    ClickedPositionColumn, ClickedPositionRow = clickedNode
+                    currNode = getNode(grid, ROWS, WIDTH)
+                    ClickedPositionColumn, ClickedPositionRow = currNode
                     if grid[ClickedPositionColumn][ClickedPositionRow].colour == (
                         0,
                         200,
@@ -81,9 +78,7 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
                             currMove = move(
                                 grid,
                                 highlightedPiece,
-                                clickedNode,
-                                TOTALBLACK,
-                                TOTALRED,
+                                currNode,
                             )
                             if currMove == prevMove and prevMove == "B":
                                 TOTALRED = TOTALRED - 1
@@ -94,7 +89,7 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
                             else:
                                 change_player()
 
-                    elif highlightedPiece == clickedNode:
+                    elif highlightedPiece == currNode:
                         pass
                     else:
                         if grid[ClickedPositionColumn][ClickedPositionRow].piece:
@@ -105,7 +100,7 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
                                 ].piece.team
                             ):
                                 highlightedPiece = highlight(
-                                    clickedNode, grid, highlightedPiece
+                                    currNode, grid, highlightedPiece
                                 )
 
                 update_display(SCREEN, grid, ROWS, WIDTH)

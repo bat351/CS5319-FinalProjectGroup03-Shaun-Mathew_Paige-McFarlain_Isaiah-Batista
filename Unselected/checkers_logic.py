@@ -56,7 +56,7 @@ def getNode(grid, rows, width):
 
 
 
-def resetColours(grid, node):
+def resetColors(grid, node):
     positions = generatePotentialMoves(node, grid)
     positions.append(node)
 
@@ -107,7 +107,7 @@ def generatePotentialMoves(nodePosition, grid):
     return positions
 
 
-def move(grid, piecePosition, newPosition, TOTALBLACK, TOTALRED):
+def move(grid, piecePosition, newPosition):
     resetColours(grid, piecePosition)
     newColumn, newRow = newPosition
     oldColumn, oldRow = piecePosition
