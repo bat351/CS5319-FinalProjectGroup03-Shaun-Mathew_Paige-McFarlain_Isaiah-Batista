@@ -5,7 +5,7 @@ import numpy as np
 import math
 import pygame
 import sys
-from data_layer import get_player, change_player, reset_player
+from business_logic import *
 # DATA LAYER
 BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)

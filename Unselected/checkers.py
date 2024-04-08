@@ -2,7 +2,7 @@
 import pygame
 import sys
 from itertools import combinations
-from data_layer import change_player
+from business_logic import *
 
 
 # DATA LAYER
@@ -18,11 +18,10 @@ BLACKKING = pygame.image.load("assets/blackKing.png")
 TOTALBLACK = 12
 TOTALRED = 12
 
-# BUSINESS LOGIC LAYER
+# USER INTERFACE LAYER
 pygame.init()
 SCREEN = pygame.display.set_mode((800, 800))
 
-# USER INTERFACE LAYER
 class Node:
     def __init__(self, row, col, width):
         self.row = row
@@ -227,6 +226,8 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
                                 TOTALRED = TOTALRED - 1
                             elif currMove == prevMove and prevMove == "R":
                                 TOTALBLACK = TOTALBLACK - 1
+                            
+                            # Access data layer via menu layer
                             else:
                                 change_player()
 

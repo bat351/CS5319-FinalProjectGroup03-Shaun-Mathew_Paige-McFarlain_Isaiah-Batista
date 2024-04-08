@@ -3,7 +3,7 @@ import pygame
 import sys
 from itertools import combinations
 
-from data_layer import get_player, change_player, reset_player
+from business_logic import *
 
 
 WIDTH = 800

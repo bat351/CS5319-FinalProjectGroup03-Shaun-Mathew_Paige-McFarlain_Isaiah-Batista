@@ -1,6 +1,6 @@
 import pygame, sys
-from Selected.button import Button
-from Selected.checkers import checkers
+from button import Button
+from checkers import checkers
 # from menu import main_menu
 
 SCREEN = pygame.display.set_mode((800, 800))

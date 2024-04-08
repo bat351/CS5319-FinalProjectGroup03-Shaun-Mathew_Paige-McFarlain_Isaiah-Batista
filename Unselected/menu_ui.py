@@ -1,7 +1,7 @@
 # reference: https://github.com/baraltech/Menu-System-PyGame
 
 import pygame, sys
-from data_layer import *
+from business_logic import *
 from button import Button
 from checkers import checkers
 from tic_tac_toe import tic_tac_toe
@@ -12,28 +12,15 @@ pygame.init()
 
 pygame.display.set_caption("Menu")
 
+SCREEN = pygame.display.set_mode((800, 800))
 
-def display_win(winner, game):
 
-    # BUSINESS LOGIC LAYER
-    if game == "Checkers":
-        if winner == "Player 1":
-            CHECKERS_WINS[0] += 1
-        elif winner == "Player 2":
-            CHECKERS_WINS[1] += 1
-    elif game == "Connect 4":
-        if winner == "Player 1":
-            CONNECT_4_WINS[0] += 1
-        elif winner == "Player 2":
-            CONNECT_4_WINS[1] += 1
-    elif game == "Tic-Tac-Toe":
-        if winner == "Player 1":
-            TIC_TAC_TOE_WINS[0] += 1
-        elif winner == "Player 2":
-            TIC_TAC_TOE_WINS[1] += 1
+def win(winner, game):
+    win_update(winner, game)
 
     while True:
-        # USER INTERFACE LAYER
+        
+        pygame.display.update()
         WINNER_MOUSE_POS = pygame.mouse.get_pos()
         SCREEN.fill("black")
         WINNER = winner + " wins"
@@ -54,7 +41,6 @@ def display_win(winner, game):
         WINNER_BACK.changeColor(WINNER_MOUSE_POS)
         WINNER_BACK.update(SCREEN)
 
-        # BUSINESS LOGIC LAYER
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -63,32 +49,29 @@ def display_win(winner, game):
                 if WINNER_BACK.checkForInput(WINNER_MOUSE_POS):
                     main_menu()
 
-        pygame.display.update()
 
-
-# MODEL
 def play_checkers():
     pygame.display.set_caption("Checkers")
     SCREEN.fill("black")
-    display_win(checkers(800, 8, 12, 12), "Checkers")
+    win(checkers(800, 8, 12, 12), "Checkers")
 
 
 def play_connect_4():
     pygame.display.set_caption("Connect 4")
     SCREEN.fill("black")
-    display_win(connect_4(), "Connect 4")
+    win(connect_4(), "Connect 4")
 
 
 def play_tic_tac_toe():
     pygame.display.set_caption("Tic-Tac-Toe")
     SCREEN.fill("black")
-    display_win(tic_tac_toe(800, 3), "Tic-Tac-Toe")
+    win(tic_tac_toe(800, 3), "Tic-Tac-Toe")
 
 
 def main_menu():
     while True:
-        # USER INTERFACE LAYER
-        SCREEN.blit(BG, (0, 0))
+    
+        SCREEN.blit(get_BG(), (0, 0))
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
