@@ -2,6 +2,7 @@ import pygame, sys
 from button import Button
 from arcade_model import CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS, SCREEN
 
+
 # MODEL
 pygame.init()
 
@@ -116,7 +117,7 @@ def player_stats():
         BACK.changeColor(MOUSE_POS)
         BACK.update(SCREEN)
 
-# CONTROLLER
+        # CONTROLLER
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
