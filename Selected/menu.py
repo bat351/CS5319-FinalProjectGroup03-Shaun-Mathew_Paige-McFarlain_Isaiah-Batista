@@ -12,10 +12,9 @@ pygame.init()
 
 pygame.display.set_caption("Menu")
 
+# MODEL
+def process_win(winner, game):
 
-def display_win(winner, game):
-
-    # MODEL
     if game == "Checkers":
         if winner == "Player 1":
             CHECKERS_WINS[0] += 1
@@ -32,8 +31,12 @@ def display_win(winner, game):
         elif winner == "Player 2":
             TIC_TAC_TOE_WINS[1] += 1
 
+    display_winner(winner)
+
+
+# VIEW
+def display_winner(winner):
     while True:
-        # VIEW
         WINNER_MOUSE_POS = pygame.mouse.get_pos()
         SCREEN.fill("black")
         WINNER = winner + " wins"
@@ -65,24 +68,23 @@ def display_win(winner, game):
 
         pygame.display.update()
 
-
 # MODEL
 def play_checkers():
     pygame.display.set_caption("Checkers")
     SCREEN.fill("black")
-    display_win(checkers(800, 8, 12, 12), "Checkers")
+    process_win(checkers(800, 8, 12, 12), "Checkers")
 
 
 def play_connect_4():
     pygame.display.set_caption("Connect 4")
     SCREEN.fill("black")
-    display_win(connect_4(), "Connect 4")
+    process_win(connect_4(), "Connect 4")
 
 
 def play_tic_tac_toe():
     pygame.display.set_caption("Tic-Tac-Toe")
     SCREEN.fill("black")
-    display_win(tic_tac_toe(800, 3), "Tic-Tac-Toe")
+    process_win(tic_tac_toe(800, 3), "Tic-Tac-Toe")
 
 
 def main_menu():
