@@ -15,7 +15,7 @@ pygame.display.set_caption("Menu")
 
 def display_win(winner, game):
 
-    # Controller
+    # MODEL
     if game == "Checkers":
         if winner == "Player 1":
             CHECKERS_WINS[0] += 1
@@ -145,7 +145,7 @@ def main_menu():
         ]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(SCREEN)
-            
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
