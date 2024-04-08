@@ -5,7 +5,7 @@ from checkers import checkers
 
 SCREEN = pygame.display.set_mode((800, 800))
 pygame.display.set_caption("Menu")
-BG = pygame.image.load("assets/Background.png")
+BG = pygame.image.load("../assets/Background.png")
 
 PLAYER_STATS = 'Enabled'
 
@@ -15,18 +15,18 @@ def settings(current_game, PLAYER_STATS):
 
         SETTINGS_MOUSE_POS = pygame.mouse.get_pos()
 
-        SETTINGS_TEXT = pygame.font.Font("assets/font.ttf", 50).render("SETTINGS", True, "Grey")
+        SETTINGS_TEXT = pygame.font.Font("../assets/font.ttf", 50).render("SETTINGS", True, "Grey")
         SETTINGS_RECT = SETTINGS_TEXT.get_rect(center=(400, 100))
 
         PLAYER_STATS_BUTTON = Button(pos=(400, 250), 
-                            input="Player Stats: " + PLAYER_STATS, font=pygame.font.Font("assets/font.ttf", 25), base="White", hover="Green")
+                            input="Player Stats: " + PLAYER_STATS, font=pygame.font.Font("../assets/font.ttf", 25), base="White", hover="Green")
         RETURN_BUTTON = Button(pos=(400, 600), 
-                            input="RETURN TO GAME", font=pygame.font.Font("assets/font.ttf", 25), base="White", hover="Green")
+                            input="RETURN TO GAME", font=pygame.font.Font("../assets/font.ttf", 25), base="White", hover="Green")
         
         RESTART_BUTTON = Button(pos=(400, 650), 
-                            input="RESTART GAME", font=pygame.font.Font("assets/font.ttf", 25), base="White", hover="Green")
+                            input="RESTART GAME", font=pygame.font.Font("../assets/font.ttf", 25), base="White", hover="Green")
         MAIN_MENU_BUTTON = Button(pos=(400, 700), 
-                            input="RETURN TO MAIN MENU", font=pygame.font.Font("assets/font.ttf", 25), base="White", hover="Green")
+                            input="RETURN TO MAIN MENU", font=pygame.font.Font("../assets/font.ttf", 25), base="White", hover="Green")
 
         SCREEN.blit(SETTINGS_TEXT, SETTINGS_RECT)
 

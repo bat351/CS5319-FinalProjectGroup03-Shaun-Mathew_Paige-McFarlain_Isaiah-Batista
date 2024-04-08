@@ -8,8 +8,8 @@ from arcade_model import *
 
 ROWS = 3
 
-X_IMAGE = pygame.image.load("assets/x.png")
-O_IMAGE = pygame.image.load("assets/o.png")
+X_IMAGE = pygame.image.load("../assets/x.png")
+O_IMAGE = pygame.image.load("../assets/o.png")
 
 # resize images
 X_IMAGE = pygame.transform.scale(X_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))

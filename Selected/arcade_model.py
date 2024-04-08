@@ -3,7 +3,7 @@ import pygame,sys
 # MODEL
 SCREEN = pygame.display.set_mode((800, 800))
 
-BG = pygame.image.load("assets/Background.png")
+BG = pygame.image.load("../assets/Background.png")
 
 WIDTH = 800
 

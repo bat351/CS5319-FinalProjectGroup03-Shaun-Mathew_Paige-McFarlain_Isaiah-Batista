@@ -9,11 +9,11 @@ from arcade_model import change_player, SCREEN
 WIDTH = 800
 ROWS = 8
 
-RED = pygame.image.load("assets/red.png")
-BLACK = pygame.image.load("assets/black.png")
+RED = pygame.image.load("../assets/red.png")
+BLACK = pygame.image.load("../assets/black.png")
 
-REDKING = pygame.image.load("assets/redKing.png")
-BLACKKING = pygame.image.load("assets/blackKing.png")
+REDKING = pygame.image.load("../assets/redKing.png")
+BLACKKING = pygame.image.load("../assets/blackKing.png")
 
 TOTALBLACK = 12
 TOTALRED = 12
@@ -91,7 +91,7 @@ def getNode(grid, rows, width):
     return (Col, Row)
 
 
-def resetColours(grid, node):
+def resetColors(grid, node):
     positions = generatePotentialMoves(node, grid)
     positions.append(node)
 
@@ -102,8 +102,8 @@ def resetColours(grid, node):
         )
 
 
-def HighlightpotentialMoves(piecePosition, grid):
-    positions = generatePotentialMoves(piecePosition, grid)
+def highlight_moves(currPos, grid):
+    positions = generatePotentialMoves(currPos, grid)
     for position in positions:
         Column, Row = position
         grid[Column][Row].colour = (0, 200, 0)
@@ -148,18 +148,18 @@ def generatePotentialMoves(nodePosition, grid):
 
     return positions
 
-def highlight(ClickedNode, Grid, OldHighlight):
-    Column, Row = ClickedNode
-    Grid[Column][Row].colour = (200, 0, 0)
-    if OldHighlight:
-        resetColours(Grid, OldHighlight)
-    HighlightpotentialMoves(ClickedNode, Grid)
+def highlight(currNode, grid, prevHighlight):
+    Column, Row = currNode
+    grid[Column][Row].colour = (200, 0, 0)
+    if prevHighlight:
+        resetColors(grid, prevHighlight)
+    highlight_moves(currNode, grid)
     return (Column, Row)
 
 
 # CONTROLLER
 def move(grid, piecePosition, newPosition, TOTALBLACK, TOTALRED):
-    resetColours(grid, piecePosition)
+    resetColors(grid, piecePosition)
     newColumn, newRow = newPosition
     oldColumn, oldRow = piecePosition
 
@@ -201,8 +201,8 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
 
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # and not pause
-                    clickedNode = getNode(grid, ROWS, WIDTH)
-                    ClickedPositionColumn, ClickedPositionRow = clickedNode
+                    currNode = getNode(grid, ROWS, WIDTH)
+                    ClickedPositionColumn, ClickedPositionRow = currNode
                     if grid[ClickedPositionColumn][ClickedPositionRow].colour == (
                         0,
                         200,
@@ -211,12 +211,12 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
                         if highlightedPiece:
                             pieceColumn, pieceRow = highlightedPiece
                         if currMove == grid[pieceColumn][pieceRow].piece.team:
-                            resetColours(grid, highlightedPiece)
+                            resetColors(grid, highlightedPiece)
                             prevMove = currMove
                             currMove = move(
                                 grid,
                                 highlightedPiece,
-                                clickedNode,
+                                currNode,
                                 TOTALBLACK,
                                 TOTALRED,
                             )
@@ -227,7 +227,7 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
                             else:
                                 change_player()
 
-                    elif highlightedPiece == clickedNode:
+                    elif highlightedPiece == currNode:
                         pass
                     else:
                         if grid[ClickedPositionColumn][ClickedPositionRow].piece:
@@ -238,7 +238,7 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
                                 ].piece.team
                             ):
                                 highlightedPiece = highlight(
-                                    clickedNode, grid, highlightedPiece
+                                    currNode, grid, highlightedPiece
                                 )
 
                 update_display(SCREEN, grid, ROWS, WIDTH)

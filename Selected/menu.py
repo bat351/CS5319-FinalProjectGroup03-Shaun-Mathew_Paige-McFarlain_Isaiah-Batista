@@ -38,7 +38,7 @@ def display_win(winner, game):
         SCREEN.fill("black")
         WINNER = winner + " wins"
         pygame.display.set_caption(WINNER)
-        WINNER_TEXT = pygame.font.Font("assets/font.ttf", 50).render(
+        WINNER_TEXT = pygame.font.Font("../assets/font.ttf", 50).render(
             WINNER, True, "White"
         )
         WINNER_RECT = WINNER_TEXT.get_rect(center=(400, 400))
@@ -46,7 +46,7 @@ def display_win(winner, game):
         WINNER_BACK = Button(
             pos=(400, 600),
             input="MAIN MENU",
-            font=pygame.font.Font("assets/font.ttf", 25),
+            font=pygame.font.Font("../assets/font.ttf", 25),
             base="White",
             hover="Green",
         )
@@ -92,7 +92,7 @@ def main_menu():
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
-        MENU_TEXT = pygame.font.Font("assets/font.ttf", 60).render(
+        MENU_TEXT = pygame.font.Font("../assets/font.ttf", 60).render(
             "MAIN MENU", True, "Grey"
         )
         MENU_RECT = MENU_TEXT.get_rect(center=(400, 100))
@@ -100,35 +100,35 @@ def main_menu():
         CHECKERS_BUTTON = Button(
             pos=(400, 250),
             input="CHECKERS",
-            font=pygame.font.Font("assets/font.ttf", 40),
+            font=pygame.font.Font("../assets/font.ttf", 40),
             base="White",
             hover="Green",
         )
         CONNECT_4_BUTTON = Button(
             pos=(400, 325),
             input="CONNECT 4",
-            font=pygame.font.Font("assets/font.ttf", 40),
+            font=pygame.font.Font("../assets/font.ttf", 40),
             base="White",
             hover="Green",
         )
         TIC_TAC_TOE_BUTTON = Button(
             pos=(400, 400),
             input="TIC-TAC-TOE",
-            font=pygame.font.Font("assets/font.ttf", 40),
+            font=pygame.font.Font("../assets/font.ttf", 40),
             base="White",
             hover="Green",
         )
         PLAYER_STATS_BUTTON = Button(
             pos=(400, 475),
             input="PLAYER STATS",
-            font=pygame.font.Font("assets/font.ttf", 40),
+            font=pygame.font.Font("../assets/font.ttf", 40),
             base="White",
             hover="Green",
         )
         QUIT_BUTTON = Button(
             pos=(400, 625),
             input="QUIT",
-            font=pygame.font.Font("assets/font.ttf", 40),
+            font=pygame.font.Font("../assets/font.ttf", 40),
             base="White",
             hover="Green",
         )
