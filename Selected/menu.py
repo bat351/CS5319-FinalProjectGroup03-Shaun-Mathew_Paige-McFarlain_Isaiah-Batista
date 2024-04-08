@@ -12,6 +12,7 @@ pygame.init()
 
 pygame.display.set_caption("Menu")
 
+
 # MODEL
 def process_win(winner, gameName):
 
@@ -41,7 +42,7 @@ def display_winner(winner):
         SCREEN.fill("black")
         WINNER = winner + " wins"
         pygame.display.set_caption(WINNER)
-        WINNER_TEXT = pygame.font.Font("../assets/font.ttf", 50).render(
+        WINNER_TEXT = pygame.font.Font("assets/font.ttf", 50).render(
             WINNER, True, "White"
         )
         WINNER_RECT = WINNER_TEXT.get_rect(center=(400, 400))
@@ -49,7 +50,7 @@ def display_winner(winner):
         WINNER_BACK = Button(
             pos=(400, 600),
             input="MAIN MENU",
-            font=pygame.font.Font("../assets/font.ttf", 25),
+            font=pygame.font.Font("assets/font.ttf", 25),
             base="White",
             hover="Green",
         )
@@ -67,6 +68,7 @@ def display_winner(winner):
                     main_menu()
 
         pygame.display.update()
+
 
 # MODEL
 def play_checkers():
@@ -92,9 +94,7 @@ def main_menu():
         # VIEW
         SCREEN.blit(BG, (0, 0))
 
-        MENU_MOUSE_POS = pygame.mouse.get_pos()
-
-        MENU_TEXT = pygame.font.Font("../assets/font.ttf", 60).render(
+        MENU_TEXT = pygame.font.Font("assets/font.ttf", 60).render(
             "MAIN MENU", True, "Grey"
         )
         MENU_RECT = MENU_TEXT.get_rect(center=(400, 100))
@@ -102,70 +102,89 @@ def main_menu():
         CHECKERS_BUTTON = Button(
             pos=(400, 250),
             input="CHECKERS",
-            font=pygame.font.Font("../assets/font.ttf", 40),
+            font=pygame.font.Font("assets/font.ttf", 40),
             base="White",
             hover="Green",
         )
         CONNECT_4_BUTTON = Button(
             pos=(400, 325),
             input="CONNECT 4",
-            font=pygame.font.Font("../assets/font.ttf", 40),
+            font=pygame.font.Font("assets/font.ttf", 40),
             base="White",
             hover="Green",
         )
         TIC_TAC_TOE_BUTTON = Button(
             pos=(400, 400),
             input="TIC-TAC-TOE",
-            font=pygame.font.Font("../assets/font.ttf", 40),
+            font=pygame.font.Font("assets/font.ttf", 40),
             base="White",
             hover="Green",
         )
         PLAYER_STATS_BUTTON = Button(
             pos=(400, 475),
             input="PLAYER STATS",
-            font=pygame.font.Font("../assets/font.ttf", 40),
+            font=pygame.font.Font("assets/font.ttf", 40),
             base="White",
             hover="Green",
         )
         QUIT_BUTTON = Button(
             pos=(400, 625),
             input="QUIT",
-            font=pygame.font.Font("../assets/font.ttf", 40),
+            font=pygame.font.Font("assets/font.ttf", 40),
             base="White",
             hover="Green",
         )
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
-        # CONTROLLER
-        for button in [
+        menu_buttons(
             CHECKERS_BUTTON,
             CONNECT_4_BUTTON,
             TIC_TAC_TOE_BUTTON,
             PLAYER_STATS_BUTTON,
             QUIT_BUTTON,
-        ]:
-            button.changeColor(MENU_MOUSE_POS)
-            button.update(SCREEN)
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if CHECKERS_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    play_checkers()
-                if CONNECT_4_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    play_connect_4()
-                if TIC_TAC_TOE_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    play_tic_tac_toe()
-                if PLAYER_STATS_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    player_stats()
-                if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    pygame.quit()
-                    sys.exit()
+        )
 
         pygame.display.update()
+
+
+# CONTROLLER
+def menu_buttons(
+    CHECKERS_BUTTON,
+    CONNECT_4_BUTTON,
+    TIC_TAC_TOE_BUTTON,
+    PLAYER_STATS_BUTTON,
+    QUIT_BUTTON,
+):
+
+    MENU_MOUSE_POS = pygame.mouse.get_pos()
+
+    for button in [
+        CHECKERS_BUTTON,
+        CONNECT_4_BUTTON,
+        TIC_TAC_TOE_BUTTON,
+        PLAYER_STATS_BUTTON,
+        QUIT_BUTTON,
+    ]:
+        button.changeColor(MENU_MOUSE_POS)
+        button.update(SCREEN)
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if CHECKERS_BUTTON.checkForInput(MENU_MOUSE_POS):
+                play_checkers()
+            if CONNECT_4_BUTTON.checkForInput(MENU_MOUSE_POS):
+                play_connect_4()
+            if TIC_TAC_TOE_BUTTON.checkForInput(MENU_MOUSE_POS):
+                play_tic_tac_toe()
+            if PLAYER_STATS_BUTTON.checkForInput(MENU_MOUSE_POS):
+                player_stats()
+            if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
+                pygame.quit()
+                sys.exit()
 
 
 main_menu()

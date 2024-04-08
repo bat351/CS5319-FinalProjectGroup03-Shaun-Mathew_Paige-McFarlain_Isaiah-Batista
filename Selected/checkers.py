@@ -9,11 +9,11 @@ from arcade_model import change_player, SCREEN
 WIDTH = 800
 ROWS = 8
 
-RED = pygame.image.load("../assets/red.png")
-BLACK = pygame.image.load("../assets/black.png")
+RED = pygame.image.load("assets/red.png")
+BLACK = pygame.image.load("assets/black.png")
 
-REDKING = pygame.image.load("../assets/redKing.png")
-BLACKKING = pygame.image.load("../assets/blackKing.png")
+REDKING = pygame.image.load("assets/redKing.png")
+BLACKKING = pygame.image.load("assets/blackKing.png")
 
 TOTALBLACK = 12
 TOTALRED = 12
@@ -108,6 +108,7 @@ def highlight_moves(currPos, grid):
         Column, Row = position
         grid[Column][Row].colour = (0, 200, 0)
 
+
 # CONTROLLER
 def opposite(team):
     return "R" if team == "B" else "B"
@@ -147,6 +148,7 @@ def generatePotentialMoves(nodePosition, grid):
                         )
 
     return positions
+
 
 def highlight(currNode, grid, prevHighlight):
     Column, Row = currNode
@@ -198,7 +200,6 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
                     print("EXIT SUCCESSFUL")
                     pygame.quit()
                     sys.exit()
-
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # and not pause
                     currNode = getNode(grid, ROWS, WIDTH)

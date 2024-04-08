@@ -5,8 +5,8 @@ WIDTH = 800
 ROWS = 3
 
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
-X_IMAGE = pygame.image.load("../assets/x.png")
-O_IMAGE = pygame.image.load("../assets/o.png")
+X_IMAGE = pygame.image.load("assets/x.png")
+O_IMAGE = pygame.image.load("assets/o.png")
 
 # resize images
 X_IMAGE = pygame.transform.scale(X_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))
