@@ -1,6 +1,11 @@
 import pygame
 from tic_tac_toe_data import *
 
+class Piece:
+    def __init__(self, image):
+        self.image = image
+
+
 class Node:
     def __init__(self, row, col, width):
         self.row = row

@@ -6,12 +6,12 @@ class Node:
         self.col = col
         self.x = int(row * width)
         self.y = int(col * width)
-        self.colour = (255, 255, 255)
+        self.color = (255, 255, 255)
         self.piece = None
 
     def draw(self, SCREEN):
         pygame.draw.rect(
-            SCREEN, self.colour, (self.x, self.y, WIDTH / ROWS, WIDTH / ROWS)
+            SCREEN, self.color, (self.x, self.y, WIDTH / ROWS, WIDTH / ROWS)
         )
         if self.piece:
             SCREEN.blit(self.piece.image, (self.x, self.y))
@@ -37,7 +37,7 @@ def make_grid(rows, width):
         for j in range(rows):
             node = Node(j, i, gap)
             if abs(i - j) % 2 == 0:
-                node.colour = (100, 100, 100)
+                node.color = (100, 100, 100)
             if (abs(i + j) % 2 == 0) and (i < 3):
                 node.piece = Piece("R")
             elif (abs(i + j) % 2 == 0) and i > 4:
@@ -60,9 +60,9 @@ def resetColors(grid, node):
     positions = generatePotentialMoves(node, grid)
     positions.append(node)
 
-    for colouredNodes in positions:
-        nodeX, nodeY = colouredNodes
-        grid[nodeX][nodeY].colour = (
+    for coloredNodes in positions:
+        nodeX, nodeY = coloredNodes
+        grid[nodeX][nodeY].color = (
             (100, 100, 100) if abs(nodeX - nodeY) % 2 == 0 else (255, 255, 255)
         )
 
@@ -86,7 +86,7 @@ def generatePotentialMoves(nodePosition, grid):
         for vector in vectors:
             columnVector, rowVector = vector
             if checker(columnVector, column) and checker(rowVector, row):
-                # grid[(column+columnVector)][(row+rowVector)].colour=ORANGE
+                # grid[(column+columnVector)][(row+rowVector)].color=ORANGE
                 if not grid[(column + columnVector)][(row + rowVector)].piece:
                     positions.append((column + columnVector, row + rowVector))
                 elif grid[column + columnVector][row + rowVector].piece and grid[
@@ -108,7 +108,7 @@ def generatePotentialMoves(nodePosition, grid):
 
 
 def move(grid, piecePosition, newPosition):
-    resetColours(grid, piecePosition)
+    resetcolors(grid, piecePosition)
     newColumn, newRow = newPosition
     oldColumn, oldRow = piecePosition
 

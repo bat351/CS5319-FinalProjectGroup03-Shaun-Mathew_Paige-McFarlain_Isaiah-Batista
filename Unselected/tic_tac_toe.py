@@ -30,11 +30,6 @@ def draw_grid(win, rows, width):
             pygame.draw.line(win, LINE_COLOR, (j * gap, 0), (j * gap, width), width=4)
 
 
-class Piece:
-    def __init__(self, image):
-        self.image = image
-
-
 def make_move(grid, row, col, player):
     if grid[row][col].piece is None:
         if player == "Player 1":

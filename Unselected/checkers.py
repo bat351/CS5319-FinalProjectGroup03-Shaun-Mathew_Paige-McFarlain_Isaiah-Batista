@@ -30,12 +30,12 @@ def highlight_moves(currPos, grid):
     positions = generatePotentialMoves(currPos, grid)
     for position in positions:
         Column, Row = position
-        grid[Column][Row].colour = (0, 200, 0)
+        grid[Column][Row].color = (0, 200, 0)
 
 
 def highlight(currNode, grid, prevHighlight):
     Column, Row = currNode
-    grid[Column][Row].colour = (200, 0, 0)
+    grid[Column][Row].color = (200, 0, 0)
     if prevHighlight:
         resetColors(grid, prevHighlight)
     highlight_moves(currNode, grid)
@@ -65,7 +65,7 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
                 if event.type == pygame.MOUSEBUTTONDOWN:  # and not pause
                     currNode = getNode(grid, ROWS, WIDTH)
                     ClickedPositionColumn, ClickedPositionRow = currNode
-                    if grid[ClickedPositionColumn][ClickedPositionRow].colour == (
+                    if grid[ClickedPositionColumn][ClickedPositionRow].color == (
                         0,
                         200,
                         0,
@@ -73,7 +73,7 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
                         if highlightedPiece:
                             pieceColumn, pieceRow = highlightedPiece
                         if currMove == grid[pieceColumn][pieceRow].piece.team:
-                            resetColours(grid, highlightedPiece)
+                            resetcolors(grid, highlightedPiece)
                             prevMove = currMove
                             currMove = move(
                                 grid,
