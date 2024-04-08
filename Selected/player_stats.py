@@ -1,5 +1,5 @@
 import pygame, sys
-from Selected.button import Button
+from button import Button
 
 # MODEL
 pygame.init()

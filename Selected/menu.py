@@ -2,11 +2,11 @@
 
 import pygame, sys
 from arcade_model import *
-from Selected.button import Button
-from Selected.checkers import checkers
-from Selected.tic_tac_toe import tic_tac_toe
-from Selected.player_stats import player_stats
-from Selected.connect_four import connect_4
+from button import Button
+from checkers import checkers
+from tic_tac_toe import tic_tac_toe
+from player_stats import player_stats
+from connect_four import connect_4
 
 pygame.init()
 
