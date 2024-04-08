@@ -20,11 +20,7 @@ LINE_COLOR = (128, 128, 128)  # Light gray for grid lines
 BG_COLOR = (0, 0, 0)  # Black background
 
 
-# MODEL
-pygame.init()
-pygame.display.set_caption("Tic Tac Toe")
 
-priorMoves = []
 
 
 # VIEW
@@ -163,6 +159,6 @@ def tic_tac_toe(WIDTH, ROWS):
                 if make_move(grid, row, col, currPlayer):
                     # if move is valid, change player
                     change_player()
-                    priorMoves.append((row, col))
+                    
 
         update_display(SCREEN, grid, ROWS, WIDTH)

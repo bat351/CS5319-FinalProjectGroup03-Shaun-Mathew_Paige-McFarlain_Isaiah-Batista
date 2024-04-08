@@ -18,9 +18,6 @@ BLACKKING = pygame.image.load("assets/blackKing.png")
 TOTALBLACK = 12
 TOTALRED = 12
 
-# CONTROLLER
-pygame.init()
-
 
 # VIEW
 class Node:
