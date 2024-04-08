@@ -4,44 +4,12 @@ import sys
 from itertools import combinations
 
 from business_logic import *
+from tic_tac_toe_logic import *
 
 
-WIDTH = 800
-ROWS = 3
-
-X_IMAGE = pygame.image.load("assets/x.png")
-O_IMAGE = pygame.image.load("assets/o.png")
-
-# resize images
-X_IMAGE = pygame.transform.scale(X_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))
-O_IMAGE = pygame.transform.scale(O_IMAGE, (WIDTH // ROWS, WIDTH // ROWS))
-
-# Colors
-LINE_COLOR = (128, 128, 128)  # Light gray for grid lines
-BG_COLOR = (0, 0, 0)  # Black background
-
-# DATA LAYER
 pygame.init()
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("Tic Tac Toe")
-
-priorMoves = []
-
-
-# USER INTERFACE LAYER
-class Node:
-    def __init__(self, row, col, width):
-        self.row = row
-        self.col = col
-        self.x = int(row * width)
-        self.y = int(col * width)
-        self.color = BG_COLOR  # Initially same as background
-        self.piece = None
-
-    def draw(self, WIN):
-        pygame.draw.rect(WIN, self.color, (self.x, self.y, WIDTH / ROWS, WIDTH / ROWS))
-        if self.piece:
-            WIN.blit(self.piece.image, (self.x, self.y))
 
 
 def update_display(win, grid, rows, width):
@@ -51,17 +19,6 @@ def update_display(win, grid, rows, width):
             spot.draw(win)
     draw_grid(win, rows, width)
     pygame.display.update()
-
-
-def make_grid(rows, width):
-    grid = []
-    gap = width // rows
-    for i in range(rows):
-        grid.append([])
-        for j in range(rows):
-            node = Node(j, i, gap)
-            grid[i].append(node)
-    return grid
 
 
 def draw_grid(win, rows, width):
@@ -91,48 +48,6 @@ def make_move(grid, row, col, player):
     return False
 
 
-# DATA LAYER
-def check_winner(grid, player):
-    for i in range(ROWS):
-        if all(
-            [
-                grid[i][j].piece is not None and grid[i][j].piece.image == player
-                for j in range(ROWS)
-            ]
-        ):
-            return True
-        if all(
-            [
-                grid[j][i].piece is not None and grid[j][i].piece.image == player
-                for j in range(ROWS)
-            ]
-        ):
-            return True
-    if all(
-        [
-            grid[i][i].piece is not None and grid[i][i].piece.image == player
-            for i in range(ROWS)
-        ]
-    ):
-        return True
-    if all(
-        [
-            grid[i][ROWS - i - 1].piece is not None
-            and grid[i][ROWS - i - 1].piece.image == player
-            for i in range(ROWS)
-        ]
-    ):
-        return True
-    return False
-
-
-def check_draw(grid):
-
-    if all([grid[i][j].piece is not None for i in range(ROWS) for j in range(ROWS)]):
-        return True
-    return False
-
-
 def tic_tac_toe(WIDTH, ROWS):
     grid = make_grid(ROWS, WIDTH)
 
@@ -155,7 +70,6 @@ def tic_tac_toe(WIDTH, ROWS):
                 pygame.quit()
                 sys.exit()
 
-            # BUSINESS LOGIC LAYER
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()
                 row = y // (WIDTH // ROWS)
