@@ -109,7 +109,7 @@ def highlight_moves(currPos, grid):
         grid[Column][Row].colour = (0, 200, 0)
 
 
-# CONTROLLER
+
 def opposite(team):
     return "R" if team == "B" else "B"
 
