@@ -1,14 +1,15 @@
 import pygame, sys
 from button import Button
+from arcade_model import CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS, SCREEN
 
 # MODEL
 pygame.init()
 
-SCREEN = pygame.display.set_mode((800, 800))
 pygame.display.set_caption("Player Statistics")
 
 
-def player_stats(CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS):
+def player_stats():
+
     while True:
         MOUSE_POS = pygame.mouse.get_pos()
 

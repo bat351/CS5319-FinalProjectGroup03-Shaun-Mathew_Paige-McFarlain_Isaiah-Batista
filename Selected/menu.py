@@ -158,7 +158,7 @@ def main_menu():
                 if TIC_TAC_TOE_BUTTON.checkForInput(MENU_MOUSE_POS):
                     play_tic_tac_toe()
                 if PLAYER_STATS_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    player_stats(CHECKERS_WINS, CONNECT_4_WINS, TIC_TAC_TOE_WINS)
+                    player_stats()
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()

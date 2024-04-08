@@ -2,7 +2,7 @@
 import pygame
 import sys
 from itertools import combinations
-from arcade_model import change_player
+from arcade_model import change_player, SCREEN
 
 
 # MODEL
@@ -20,7 +20,7 @@ TOTALRED = 12
 
 # CONTROLLER
 pygame.init()
-SCREEN = pygame.display.set_mode((800, 800))
+
 
 # VIEW
 class Node:
@@ -202,7 +202,7 @@ def checkers(WIDTH, ROWS, TOTALBLACK, TOTALRED):
                     pygame.quit()
                     sys.exit()
 
-              
+
                 if event.type == pygame.MOUSEBUTTONDOWN:  # and not pause
                     clickedNode = getNode(grid, ROWS, WIDTH)
                     ClickedPositionColumn, ClickedPositionRow = clickedNode
