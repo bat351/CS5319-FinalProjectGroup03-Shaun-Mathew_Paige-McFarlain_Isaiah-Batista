@@ -6,93 +6,10 @@ import math
 import pygame
 import sys
 from business_logic import *
-# DATA LAYER
-BLUE = (0, 0, 255)
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-YELLOW = (255, 255, 0)
-SQUARESIZE = 100
-
-ROW_COUNT = 6
-COLUMN_COUNT = 7
-EVEN = 0
-ODD = 1
-
-SIZE = 800
-
-SQUARESIZE = SIZE / COLUMN_COUNT
-
-RADIUS = int(SQUARESIZE / 2 - 5)
+from connect_four_logic import *
 
 
-# USER INTERFACE LAYER
 SCREEN = pygame.display.set_mode((800, 800))
-
-
-def create_board():
-    board = np.zeros((6, 7))
-    return board
-
-
-def drop_piece(board, row, col, piece):
-    board[row][col] = piece
-
-
-def is_valid_location(board, col):
-    return board[ROW_COUNT - 1][col] == 0
-
-
-def get_next_open_row(board, col):
-    for i in range(ROW_COUNT):
-        if board[i][col] == 0:
-            return i
-
-
-def winning_move(board, piece):
-    # horizontal
-    for c in range(COLUMN_COUNT - 3):
-        for r in range(ROW_COUNT):
-            if (
-                board[r][c] == piece
-                and board[r][c + 1] == piece
-                and board[r][c + 2] == piece
-                and board[r][c + 3] == piece
-            ):
-                return True
-
-    # vertical
-    for c in range(COLUMN_COUNT):
-        for r in range(ROW_COUNT - 3):
-            if (
-                board[r][c] == piece
-                and board[r + 1][c] == piece
-                and board[r + 2][c] == piece
-                and board[r + 3][c] == piece
-            ):
-                return True
-
-    # positively sloped
-    for c in range(COLUMN_COUNT - 3):
-        for r in range(ROW_COUNT - 3):
-            if (
-                board[r][c] == piece
-                and board[r + 1][c + 1] == piece
-                and board[r + 2][c + 2] == piece
-                and board[r + 3][c + 3] == piece
-            ):
-                return True
-
-    # negatively sloped
-    for c in range(COLUMN_COUNT - 3):
-        for r in range(3, ROW_COUNT):
-            if (
-                board[r][c] == piece
-                and board[r - 1][c + 1] == piece
-                and board[r - 2][c + 2] == piece
-                and board[r - 3][c + 3] == piece
-            ):
-                return True
-
 
 def draw_board(board):
     for c in range(COLUMN_COUNT):
@@ -134,11 +51,6 @@ def draw_board(board):
                     ),
                     RADIUS,
                 )
-
-
-def print_board(board):
-    print(np.flip(board, 0))
-    print("\n")
 
 
 def connect_4():
